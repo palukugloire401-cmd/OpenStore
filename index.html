@@ -3,55 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenStore Pro - Store Android</title>
+    <title>OpenStore</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root{--bg:#070a13;--surface:#111827;--accent:#00e676;--text:#e0e0e0;--text2:#9ca3af;--border:#1f2937;--radius:16px}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-        .header{background:#111827;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
-        .logo{color:#fff;font-size:20px;font-weight:bold;text-decoration:none}.logo i{color:var(--accent)}
-        button{background:var(--accent);color:#000;border:none;padding:10px 20px;border-radius:50px;font-weight:bold;cursor:pointer;font-size:14px}button:hover{background:#00ff84}
+        body{font-family:Arial,sans-serif;background:#070a13;color:#e0e0e0;min-height:100vh}
+        .header{background:#111827;padding:15px;display:flex;justify-content:space-between;align-items:center}
+        .logo{color:#fff;font-size:20px;font-weight:bold}.logo i{color:#00e676}
+        button{background:#00e676;color:#000;border:none;padding:10px 20px;border-radius:50px;font-weight:bold;cursor:pointer;font-size:14px}button:hover{background:#00ff84}
         .container{max-width:1000px;margin:0 auto;padding:15px}
         .grid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}@media(min-width:900px){.grid{grid-template-columns:1fr 1fr 1fr}}
-        .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+        .card{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:18px}
         .card h3{color:#fff;margin-bottom:5px}
-        .card .dev{color:var(--text2);font-size:12px;margin-bottom:8px}
-        .card .desc{color:var(--text2);font-size:13px;margin-bottom:10px}
-        .card .meta{color:var(--accent);font-size:11px;margin-bottom:10px}
-        
-        /* BOUTON TÉLÉCHARGER - CORRIGÉ */
-        .btn-download{
-            display:block!important;
-            width:100%!important;
-            padding:15px!important;
-            background:#00e676!important;
-            color:#000!important;
-            border:none!important;
-            border-radius:12px!important;
-            font-size:16px!important;
-            font-weight:bold!important;
-            cursor:pointer!important;
-            text-align:center!important;
-            text-decoration:none!important;
-            margin:10px 0!important;
-            position:relative!important;
-            z-index:10!important;
-            pointer-events:auto!important;
-            -webkit-appearance:button!important;
-            -moz-appearance:button!important;
-            appearance:button!important;
-        }
-        .btn-download:hover{background:#00ff84!important}
-        .btn-download:active{transform:scale(0.97)!important}
-        
+        .card p{color:#9ca3af;font-size:13px;margin:8px 0}
+        .btn-download{display:block;width:100%;padding:14px;background:#00e676;color:#000;border:none;border-radius:12px;font-size:15px;font-weight:bold;cursor:pointer;text-align:center;text-decoration:none;margin:10px 0}
         .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}
-        .modal-box{background:var(--surface);padding:20px;border-radius:var(--radius);width:100%;max-width:480px;border:1px solid var(--border)}
+        .modal-box{background:#111827;padding:20px;border-radius:16px;width:100%;max-width:450px;border:1px solid #1f2937}
         .modal-box h2{color:#fff;margin-bottom:15px}
-        .modal-box input,.modal-box textarea,.modal-box select{width:100%;padding:10px;margin-bottom:10px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:#fff;font-size:13px}
-        .upload-area{border:2px dashed var(--border);padding:20px;text-align:center;border-radius:10px;margin-bottom:10px;cursor:pointer;background:var(--bg)}.upload-area:hover{border-color:var(--accent)}
-        .toast{position:fixed;top:15px;right:15px;background:var(--surface);border-left:3px solid var(--accent);padding:12px;border-radius:10px;z-index:9999;font-size:13px;animation:slide 0.3s ease}@keyframes slide{from{transform:translateX(100%)}to{transform:translateX(0)}}
-        .footer{text-align:center;padding:15px;color:var(--text2);border-top:1px solid var(--border);margin-top:20px;font-size:12px}
+        .modal-box input,.modal-box textarea{width:100%;padding:10px;margin-bottom:10px;background:#070a13;border:1px solid #1f2937;border-radius:10px;color:#fff;font-size:13px}
+        .upload-area{border:2px dashed #1f2937;padding:20px;text-align:center;border-radius:10px;margin-bottom:10px;cursor:pointer;background:#070a13}.upload-area:hover{border-color:#00e676}
+        .toast{position:fixed;top:15px;right:15px;background:#111827;border-left:3px solid #00e676;padding:12px;border-radius:10px;z-index:9999;font-size:13px;animation:slide 0.3s ease}@keyframes slide{from{transform:translateX(100%)}to{transform:translateX(0)}}
     </style>
 </head>
 <body>
@@ -59,30 +30,29 @@
 
 <header class="header">
     <a href="/" class="logo"><i class="fab fa-android"></i> OpenStore</a>
-    <button onclick="ouvrirModal()"><i class="fas fa-upload"></i> Publier une app</button>
+    <button onclick="ouvrirModal()"><i class="fas fa-upload"></i> Publier</button>
 </header>
 
 <div class="container">
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px;text-align:center;color:var(--text2);margin-bottom:15px;">📢 Publicité Start.io - ID: 204468294</div>
+    <div style="background:#111827;border:1px solid #1f2937;border-radius:12px;padding:15px;text-align:center;color:#6b7280;margin-bottom:15px;">📢 Publicité Start.io - ID: 204468294</div>
     
     <h1 style="text-align:center;color:#fff;margin:15px 0;">📱 Catalogue</h1>
-    <div class="grid" id="appGrid"><p style="color:var(--text2);text-align:center;">Chargement...</p></div>
+    <div class="grid" id="appGrid"><p style="color:#9ca3af;text-align:center;">Chargement...</p></div>
     
-    <p style="text-align:center;color:var(--text2);margin-top:15px;">📢 Publicité 300x250 - ID: 204468294</p>
+    <p style="text-align:center;color:#6b7280;margin-top:15px;">📢 Publicité 300x250 - ID: 204468294</p>
 </div>
 
-<footer class="footer"><p>© 2024 OpenStore</p></footer>
+<footer style="text-align:center;padding:15px;color:#6b7280;border-top:1px solid #1f2937;margin-top:20px;font-size:12px;"><p>© 2024 OpenStore</p></footer>
 
 <div class="modal" id="maModal"><div class="modal-box"><h2>📤 Publier</h2>
     <input type="text" id="appName" placeholder="Nom *">
     <input type="text" id="developer" placeholder="Développeur *">
     <input type="text" id="version" placeholder="Version *">
     <textarea id="description" placeholder="Description *" style="min-height:60px;resize:vertical;"></textarea>
-    <div class="upload-area" id="uploadZone"><i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour l'APK</p></div>
-    <input type="file" id="apkFile" accept=".apk" style="display:none;">
-    <div id="fileInfo" style="display:none;color:var(--accent);font-size:12px;margin-bottom:8px;"></div>
+    <input type="text" id="appUrl" placeholder="Lien de téléchargement (URL directe APK) *">
+    <p style="color:#9ca3af;font-size:11px;margin-bottom:10px;">Ex: https://github.com/.../monapp.apk</p>
     <div style="display:flex;gap:8px;justify-content:flex-end;">
-        <button style="background:transparent;border:1px solid var(--border);color:var(--text2);" onclick="fermerModal()">Annuler</button>
+        <button style="background:transparent;border:1px solid #1f2937;color:#9ca3af;" onclick="fermerModal()">Annuler</button>
         <button onclick="publier()">📤 Publier</button>
     </div>
 </div></div>
@@ -100,107 +70,53 @@ async function loadApps() {
 
 function afficher() {
     let g=document.getElementById('appGrid');
-    if(apps.length===0){ g.innerHTML='<p style="color:var(--text2);text-align:center;">Aucune app. Publiez la première !</p>'; return; }
+    if(apps.length===0){ g.innerHTML='<p style="color:#9ca3af;text-align:center;">Aucune app. Publiez la première !</p>'; return; }
     
     g.innerHTML=apps.map(function(a){
         let dl=telechargements[a.id]||0;
-        let hasFile=a.apkData&&a.apkData!=='';
-        let nomFichier=(a.nom||'app').replace(/[^a-zA-Z0-9]/g,'_')+'.apk';
+        let url=a.url||'';
+        let isReal=url.startsWith('http://')||url.startsWith('https://');
         
-        // Si le fichier existe en base64, on crée un blob et on le télécharge
-        if(hasFile){
-            return '<div class="card">'+
-                '<h3>'+(a.nom||'Sans nom')+'</h3>'+
-                '<div class="dev">Par '+(a.dev||'Inconnu')+'</div>'+
-                '<div class="desc">'+(a.desc||'')+'</div>'+
-                '<div class="meta">📦 v'+(a.ver||'1.0')+' | 📥 '+dl+' téléchargements</div>'+
-                '<button class="btn-download" onclick="telechargerFichier(\''+a.id+'\',\''+nomFichier+'\',\''+(a.nom||'App')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER</button>'+
-            '</div>';
-        }else{
-            return '<div class="card">'+
-                '<h3>'+(a.nom||'Sans nom')+'</h3>'+
-                '<div class="dev">Par '+(a.dev||'Inconnu')+'</div>'+
-                '<div class="desc">'+(a.desc||'')+'</div>'+
-                '<div class="meta">📦 v'+(a.ver||'1.0')+' | 📥 '+dl+' téléchargements</div>'+
-                '<button class="btn-download" onclick="toast(\'Aucun fichier disponible\')"><i class="fas fa-download"></i> TÉLÉCHARGER (INDISPONIBLE)</button>'+
-            '</div>';
-        }
+        return '<div class="card">'+
+            '<h3>'+(a.nom||'Sans nom')+'</h3>'+
+            '<p>Par '+(a.dev||'Inconnu')+' | v'+(a.ver||'1.0')+'</p>'+
+            '<p>'+(a.desc||'')+'</p>'+
+            '<p style="color:#00e676;font-size:11px;">📥 '+dl+' téléchargements</p>'+
+            (isReal?
+                '<a href="'+url+'" class="btn-download" target="_blank" rel="noopener noreferrer" onclick="compterDL('+a.id+',\''+(a.nom||'App')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER</a>':
+                '<button class="btn-download" onclick="compterDL('+a.id+',\''+(a.nom||'App')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER (SIMULATION)</button>')+
+        '</div>';
     }).join('');
 }
 
-// FONCTION DE TÉLÉCHARGEMENT QUI MARCHE VRAIMENT
-function telechargerFichier(id, nomFichier, nomApp) {
-    let app=apps.find(function(a){ return a.id==id; });
-    if(!app||!app.apkData){ toast('Fichier non trouvé'); return; }
-    
-    try {
-        // Convertir le base64 en blob
-        let base64=app.apkData;
-        let byteString=atob(base64.split(',')[1]);
-        let mimeString=base64.split(',')[0].split(':')[1].split(';')[0];
-        let ab=new ArrayBuffer(byteString.length);
-        let ia=new Uint8Array(ab);
-        for(let i=0;i<byteString.length;i++){ ia[i]=byteString.charCodeAt(i); }
-        let blob=new Blob([ab],{type:mimeString});
-        
-        // Créer un lien et le cliquer automatiquement
-        let url=URL.createObjectURL(blob);
-        let a=document.createElement('a');
-        a.href=url;
-        a.download=nomFichier;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        
-        // Compter le téléchargement
-        telechargements[id]=(telechargements[id]||0)+1;
-        localStorage.setItem('dl',JSON.stringify(telechargements));
-        toast('📥 '+nomApp+' téléchargé !');
-        setTimeout(function(){ afficher(); },500);
-    } catch(e) {
-        toast('Erreur téléchargement: '+e.message);
-    }
-}
+function compterDL(id,nom){ telechargements[id]=(telechargements[id]||0)+1; localStorage.setItem('dl',JSON.stringify(telechargements)); toast('📥 '+nom+' téléchargé !'); setTimeout(function(){ afficher(); },500); }
 
-function publier() {
+function publier(){
     let n=document.getElementById('appName').value.trim();
     let d=document.getElementById('developer').value.trim();
     let v=document.getElementById('version').value.trim();
     let desc=document.getElementById('description').value.trim();
-    let f=document.getElementById('apkFile').files[0];
+    let url=document.getElementById('appUrl').value.trim();
     
     if(!n||!d||!v||!desc){ toast('Remplissez tous les champs'); return; }
-    if(!f){ toast('Sélectionnez un fichier APK'); return; }
+    if(!url){ toast('Ajoutez un lien de téléchargement'); return; }
     
-    let btn=event.target; btn.disabled=true; btn.textContent='⏳ Upload...';
+    let existants=apps.filter(function(a){ return (a.nom||'').toLowerCase()===n.toLowerCase()&&(a.dev||'').toLowerCase()===d.toLowerCase(); });
+    existants.forEach(function(o){ let i=apps.findIndex(function(a){ return a.id===o.id; }); if(i>-1) apps.splice(i,1); });
     
-    let reader=new FileReader();
-    reader.onload=function(e){
-        let apkData=e.target.result;
-        
-        let existants=apps.filter(function(a){ return (a.nom||'').toLowerCase()===n.toLowerCase()&&(a.dev||'').toLowerCase()===d.toLowerCase(); });
-        existants.forEach(function(o){ let i=apps.findIndex(function(a){ return a.id===o.id; }); if(i>-1) apps.splice(i,1); });
-        
-        apps.unshift({ id:Date.now(), nom:n, dev:d, ver:v, desc:desc, apkData:apkData, date:new Date().toISOString() });
-        localStorage.setItem('apps',JSON.stringify(apps));
-        fetch(DB_URL,{ method:'PUT',body:JSON.stringify(apps) }).catch(function(){});
-        
-        toast('✅ '+n+' publiée !');
-        fermerModal();
-        afficher();
-        btn.disabled=false;
-        btn.textContent='📤 Publier';
-    };
-    reader.readAsDataURL(f);
+    apps.unshift({ id:Date.now(), nom:n, dev:d, ver:v, desc:desc, url:url, date:new Date().toISOString() });
+    localStorage.setItem('apps',JSON.stringify(apps));
+    fetch(DB_URL,{ method:'PUT',body:JSON.stringify(apps) }).catch(function(){});
+    
+    toast('✅ '+n+' publiée !');
+    fermerModal();
+    afficher();
 }
 
 function ouvrirModal(){ document.getElementById('maModal').classList.add('show'); }
-function fermerModal(){ document.getElementById('maModal').classList.remove('show'); document.getElementById('fileInfo').style.display='none'; }
+function fermerModal(){ document.getElementById('maModal').classList.remove('show'); }
 function toast(m){ let d=document.createElement('div'); d.className='toast'; d.textContent=m; document.getElementById('toastContainer').appendChild(d); setTimeout(function(){ d.remove(); },3000); }
 
-document.getElementById('uploadZone').onclick=function(){ document.getElementById('apkFile').click(); };
-document.getElementById('apkFile').onchange=function(){ let f=this.files[0]; if(f){ document.getElementById('fileInfo').textContent='✅ '+f.name+' ('+(f.size/1048576).toFixed(1)+' MB)'; document.getElementById('fileInfo').style.display='block'; } };
 document.getElementById('maModal').onclick=function(e){ if(e.target===this) fermerModal(); };
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') fermerModal(); });
 
