@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="OpenStore - Téléchargez des Apps Android" id="ogTitle">
-    <meta property="og:description" content="Store Android intelligent avec Firebase" id="ogDesc">
+    <meta property="og:description" content="Store Android intelligent avec Firebase. Publiez et téléchargez des apps gratuitement." id="ogDesc">
     <meta property="og:image" content="https://palukugloire401-cmd.github.io/Boutique/icon-store.png" id="ogImage">
     <meta property="og:url" content="https://palukugloire401-cmd.github.io/Boutique/" id="ogUrl">
     <meta name="twitter:card" content="summary_large_image">
@@ -24,7 +24,7 @@
         .btn-accent{background:var(--accent);color:#000}.btn-accent:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 5px 20px rgba(0,230,118,0.3)}
         .btn-dev{background:var(--dev);color:#fff}.btn-dev:hover{background:#2563eb;transform:translateY(-2px)}
         .btn-sm{padding:5px 10px;font-size:10px}
-        .menu-container{position:relative}.menu-btn{background:transparent;border:1px solid var(--border);color:#fff;width:35px;height:35px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;padding:0}.menu-btn:hover{background:var(--surface);border-color:var(--accent)}
+        .menu-container{position:relative}.menu-btn{background:transparent;border:1px solid var(--border);color:#fff;width:35px;height:35px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;padding:0}.menu-btn:hover{background:var(--surface);border-color:var(--accent)}
         .menu-dropdown{display:none;position:absolute;top:100%;right:0;background:var(--surface);border:1px solid var(--border);border-radius:12px;min-width:220px;padding:8px;z-index:200;margin-top:5px;box-shadow:0 10px 30px rgba(0,0,0,0.5);max-height:400px;overflow-y:auto}.menu-dropdown.show{display:block}
         .menu-item{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--text);width:100%;border:none;background:none;text-align:left}.menu-item:hover{background:var(--bg)}.menu-divider{border:none;border-top:1px solid var(--border);margin:5px 0}
         .container{max-width:1100px;margin:0 auto;padding:10px 15px}
@@ -34,30 +34,29 @@
         .hero{text-align:center;background:linear-gradient(135deg,#111827,#1a2332);border:1px solid var(--border);border-radius:var(--radius);padding:25px 15px;margin:12px 0}
         .hero h1{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:26px;margin:10px 0}
         .section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px;margin:12px 0}
-        h2{color:#fff;margin-bottom:12px;font-size:18px;display:flex;align-items:center;gap:6px}h3{color:#fff;font-size:14px;margin-bottom:8px}
+        h2{color:#fff;margin-bottom:12px;font-size:18px;display:flex;align-items:center;gap:6px}
         p{color:var(--text2);margin-bottom:8px;font-size:13px}
         .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin:10px 0}
-        .stat-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;transition:all 0.3s}.stat-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+        .stat-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
         .stat-card .val{font-size:18px;font-weight:bold}.stat-card .val.g{color:var(--accent)}.stat-card .val.b{color:var(--dev)}.stat-card .val.o{color:var(--user)}
         .stat-card .lbl{font-size:9px;color:var(--text2);text-transform:uppercase;margin-top:4px}
         .grid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}@media(min-width:900px){.grid{grid-template-columns:1fr 1fr 1fr}}
         .card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;transition:all 0.3s;display:flex;flex-direction:column}
         .card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 30px rgba(0,230,118,0.1)}
-        .card.dev-card{border-left:4px solid var(--dev)}.card.vip-card{border-left:4px solid var(--vip);background:linear-gradient(135deg,#0a0e17,#111827)}
-        .card.highlight{border:2px solid var(--accent)!important;box-shadow:0 0 40px rgba(0,230,118,0.3)!important;animation:highlightPulse 2s ease-in-out}
-        @keyframes highlightPulse{0%,100%{box-shadow:0 0 30px rgba(0,230,118,0.3)}50%{box-shadow:0 0 60px rgba(0,230,118,0.6)}}
         .card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-        .card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;flex-shrink:0;position:relative;overflow:hidden}
-        .card-icon.android{background:linear-gradient(135deg,#3DDC84,#00c853)}.card-icon.android i{font-size:28px}
-        .card-icon.outils{background:linear-gradient(135deg,#3b82f6,#2563eb)}.card-icon.jeux{background:linear-gradient(135deg,#f59e0b,#d97706)}.card-icon.social{background:linear-gradient(135deg,#8b5cf6,#7c3aed)}.card-icon.productivite{background:linear-gradient(135deg,#ef4444,#dc2626)}.card-icon.multimedia{background:linear-gradient(135deg,#ec4899,#db2777)}.card-icon.autre{background:linear-gradient(135deg,#6b7280,#4b5563)}
+        
+        /* ICÔNE DE L'APPLICATION - ANDROID PAR DÉFAUT */
+        .card-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,#3DDC84,#00c853);position:relative}
+        .card-icon img{width:100%;height:100%;object-fit:cover}
+        .card-icon .default-icon{font-size:28px}
+        
         .card-title{font-weight:bold;font-size:14px;color:#fff}.card-dev{color:var(--text2);font-size:10px}
         .card-desc{color:var(--text2);font-size:11px;margin:8px 0;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
         .card-meta{display:flex;justify-content:space-between;align-items:center;margin:8px 0;font-size:10px}.card-ver{color:var(--accent);font-weight:bold}.card-dl{color:var(--text2)}
-        .btn-download-big{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:16px 20px;background:linear-gradient(135deg,var(--accent),#00c853);color:#000;border:none;border-radius:14px;font-size:16px;font-weight:bold;cursor:pointer;transition:all 0.3s;margin:8px 0;letter-spacing:1px;box-shadow:0 4px 15px rgba(0,230,118,0.3)}
+        .btn-download-big{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 20px;background:linear-gradient(135deg,var(--accent),#00c853);color:#000;border:none;border-radius:14px;font-size:15px;font-weight:bold;cursor:pointer;transition:all 0.3s;margin:8px 0;box-shadow:0 4px 15px rgba(0,230,118,0.3);text-decoration:none}
         .btn-download-big:hover{background:linear-gradient(135deg,var(--accent2),var(--accent));transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,230,118,0.5)}
-        .btn-download-big i{font-size:22px}
         .card-actions-row{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
-        .btn-icon-action{flex:1;min-width:45px;display:flex;align-items:center;justify-content:center;gap:3px;padding:8px 4px;border-radius:10px;font-size:9px;font-weight:bold;cursor:pointer;border:none;color:#fff;transition:all 0.2s}.btn-icon-action:hover{transform:translateY(-1px);opacity:0.9}
+        .btn-icon-action{flex:1;min-width:45px;display:flex;align-items:center;justify-content:center;gap:3px;padding:8px 4px;border-radius:10px;font-size:9px;font-weight:bold;cursor:pointer;border:none;color:#fff;transition:all 0.2s}.btn-icon-action:hover{opacity:0.9}
         .btn-wa{background:#25D366}.btn-tw{background:#1DA1F2}.btn-fb{background:#1877F2}.btn-link{background:#6b7280}
         .empty{border:2px dashed var(--border);border-radius:12px;padding:30px;text-align:center;color:var(--text2);grid-column:1/-1}.empty i{font-size:40px;color:var(--accent);margin-bottom:10px}
         .search-box{position:relative;margin-bottom:12px}.search-box input{width:100%;padding:9px 12px 9px 32px;background:var(--bg);border:1px solid var(--border);border-radius:50px;color:#fff;font-size:13px}.search-box i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text2)}
@@ -65,22 +64,15 @@
         .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999;justify-content:center;align-items:center;padding:15px}.modal.show{display:flex}
         .modal-box{background:var(--surface);padding:20px;border-radius:var(--radius);width:100%;max-width:500px;border:1px solid var(--border);max-height:85vh;overflow-y:auto}
         .modal-box h2{font-size:16px;margin-bottom:12px}.modal-box input,.modal-box textarea,.modal-box select{width:100%;padding:9px;margin-bottom:8px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:#fff;font-size:12px}
-        .modal-box textarea{min-height:50px;resize:vertical}.upload-area{border:2px dashed var(--border);padding:15px;text-align:center;border-radius:8px;margin-bottom:8px;cursor:pointer;background:var(--bg)}.upload-area:hover{border-color:var(--accent)}.upload-area i{font-size:24px;color:var(--accent)}
+        .modal-box textarea{min-height:50px;resize:vertical}
+        .upload-area{border:2px dashed var(--border);padding:15px;text-align:center;border-radius:8px;margin-bottom:8px;cursor:pointer;background:var(--bg)}.upload-area:hover{border-color:var(--accent)}.upload-area i{font-size:24px;color:var(--accent)}
         .file-info{display:none;background:rgba(0,230,118,0.1);padding:6px 10px;border-radius:6px;margin-bottom:8px;color:var(--accent);font-size:11px}.file-info.show{display:block}
         .progress-bar{display:none;height:3px;background:var(--border);border-radius:3px;margin-bottom:8px;overflow:hidden}.progress-bar.active{display:block}.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;transition:width 0.3s}
         .modal-buttons{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}.btn-cancel{background:transparent;border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:50px;cursor:pointer;font-weight:bold;font-size:12px}
         .toast{position:fixed;top:15px;right:15px;background:var(--surface);border-left:3px solid var(--accent);padding:10px 15px;border-radius:8px;z-index:9999;font-size:12px;animation:slide 0.3s ease;max-width:300px}.toast.error{border-left-color:var(--danger)}@keyframes slide{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
         .footer{text-align:center;padding:15px;color:var(--text2);border-top:1px solid var(--border);margin-top:20px;font-size:11px}
         .badge{display:inline-block;padding:2px 6px;border-radius:50px;font-size:8px;font-weight:bold;text-transform:uppercase}.badge-vip{background:var(--vip);color:#fff}.badge-new{background:var(--danger);color:#fff;animation:pulse 1.5s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-        .role-indicator{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:50px;font-size:10px;font-weight:bold;cursor:pointer}.role-indicator.dev{background:rgba(59,130,246,0.2);color:var(--dev)}.role-indicator.user{background:rgba(245,158,11,0.2);color:var(--user)}
-        .tabs-nav{display:flex;gap:3px;margin-bottom:15px;background:var(--bg);border-radius:50px;padding:3px;flex-wrap:wrap}.tab-nav{flex:1;min-width:60px;text-align:center;padding:8px;border-radius:50px;cursor:pointer;font-weight:bold;font-size:10px;transition:all 0.3s;color:var(--text2);border:none;background:transparent}.tab-nav.active{background:var(--accent);color:#000}
-        .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}
-        .dash-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;transition:all 0.3s}.dash-card:hover{transform:translateY(-2px);border-color:var(--accent)}
-        .dash-card i{font-size:22px;margin-bottom:5px}.dash-card .dv{font-size:18px;font-weight:bold;color:var(--accent)}.dash-card .dl{font-size:9px;color:var(--text2);margin-top:3px}
-        .rating-stars{color:var(--user);font-size:20px;cursor:pointer;transition:all 0.2s;margin:0 2px}.rating-stars:hover{transform:scale(1.3)}
-        .achievement-badge{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:20px;font-size:10px;font-weight:bold;margin:3px}
-        .achievement-badge.unlocked{background:linear-gradient(135deg,#f59e0b,#d97706);color:#000}.achievement-badge.locked{background:var(--bg);color:var(--text2);opacity:0.4}
-        @media(max-width:600px){.header{flex-direction:column;text-align:center}.tabs-nav{flex-direction:column}}
+        @media(max-width:600px){.header{flex-direction:column;text-align:center}}
     </style>
 </head>
 <body>
@@ -89,21 +81,25 @@
 <header class="header">
     <a href="/" class="logo"><div class="logo-icon">📱</div>OpenStore</a>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <span class="role-indicator user" id="roleIndicator" onclick="toggleMenu()"><i class="fas fa-user"></i> Utilisateur ▾</span>
         <div style="text-align:center;"><div style="font-weight:bold;color:var(--accent);font-size:13px;" id="totalAppsH">0</div><div style="font-size:8px;color:var(--text2);">APPS</div></div>
-        <button class="btn-accent btn-sm" onclick="ouvrirModal()"><i class="fas fa-cloud-upload-alt"></i> Publier</button>
-        <div class="menu-container"><button class="menu-btn" onclick="toggleMenu()">⋮</button>
-            <div class="menu-dropdown" id="menuDropdown"></div>
+        <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()" title="Menu">⋮</button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <div class="menu-item" onclick="ouvrirModal()"><i class="fas fa-upload"></i> 📤 Publier une app (Dev)</div>
+                <div class="menu-item" onclick="ouvrirFavoris()"><i class="fas fa-heart"></i> ❤️ Mes Favoris</div>
+                <div class="menu-item" onclick="ouvrirHistorique()"><i class="fas fa-history"></i> 🕐 Historique</div>
+                <hr class="menu-divider">
+                <div class="menu-item" onclick="ouvrirDashboard()"><i class="fas fa-tachometer-alt"></i> 📊 Dashboard</div>
+                <div class="menu-item" onclick="genererRapport()"><i class="fas fa-file-alt"></i> 📋 Rapport</div>
+                <div class="menu-item" onclick="partagerSite()"><i class="fas fa-share-alt"></i> 📤 Partager</div>
+            </div>
         </div>
     </div>
 </header>
 
 <div class="container">
     <div class="ad-box"><div class="ad-placeholder">📢 Publicité Start.io - 728x90 (ID: 204468294)</div></div>
-    
-    <div class="hero"><h1>🤖 OpenStore</h1><p style="color:var(--text2);font-size:13px;">🔥 Firebase • 👨‍💻 Devs • 👥 Users • 💎 VIP</p>
-        <button class="btn-accent" onclick="ouvrirModal()"><i class="fas fa-rocket"></i> Publier une app</button>
-    </div>
+    <div class="hero"><h1>🤖 OpenStore</h1><p style="color:var(--text2);font-size:13px;">Téléchargez les meilleures apps Android • Gratuit • Rapide</p></div>
 
     <div class="stats-grid">
         <div class="stat-card"><div class="val g" id="statApps">0</div><div class="lbl">Apps</div></div>
@@ -111,43 +107,10 @@
         <div class="stat-card"><div class="val o" id="statDL">0</div><div class="lbl">Téléch.</div></div>
     </div>
 
-    <!-- DASHBOARD -->
-    <div class="section"><h2><i class="fas fa-tachometer-alt"></i> Tableau de Bord</h2>
-        <div class="dash-grid">
-            <div class="dash-card" onclick="ouvrirFavoris()"><i class="fas fa-heart" style="color:#ef4444;"></i><div class="dv" id="dashFav">0</div><div class="dl">Favoris</div></div>
-            <div class="dash-card" onclick="ouvrirHistorique()"><i class="fas fa-history" style="color:var(--user);"></i><div class="dv" id="dashHist">0</div><div class="dl">Historique</div></div>
-            <div class="dash-card" onclick="ouvrirAchievements()"><i class="fas fa-trophy" style="color:#f59e0b;"></i><div class="dv" id="dashAch">0</div><div class="dl">Succès</div></div>
-            <div class="dash-card" onclick="genererRapport()"><i class="fas fa-file-alt" style="color:var(--accent);"></i><div class="dv">📊</div><div class="dl">Rapport</div></div>
-        </div>
-    </div>
-
-    <div class="tabs-nav" id="catalogueTabs">
-        <button class="tab-nav active" onclick="changerCatalogueTab('all',this)">📱 Toutes</button>
-        <button class="tab-nav" onclick="changerCatalogueTab('recent',this)">🕐 Récentes</button>
-        <button class="tab-nav" onclick="changerCatalogueTab('popular',this)">🔥 Populaires</button>
-        <button class="tab-nav" onclick="changerCatalogueTab('vip',this)" style="color:var(--vip);">💎 VIP</button>
-    </div>
-
-    <div class="section" id="catalogue"><h2><i class="fas fa-store"></i> Catalogue</h2>
-        <div class="search-box"><i class="fas fa-search"></i><input type="search" id="searchInput" placeholder="Rechercher..." oninput="filtrerApps()"></div>
-        <div class="filters"><span class="filter active" onclick="filtrerCategorie('all',this)">Toutes</span><span class="filter" onclick="filtrerCategorie('outils',this)">🛠️</span><span class="filter" onclick="filtrerCategorie('jeux',this)">🎮</span><span class="filter" onclick="filtrerCategorie('social',this)">💬</span><span class="filter" onclick="filtrerCategorie('productivite',this)">📊</span><span class="filter" onclick="filtrerCategorie('multimedia',this)">🎬</span></div>
-        <div class="grid" id="appGrid"><div class="empty"><i class="fab fa-android"></i><h3>Chargement...</h3></div></div>
-    </div>
-
-    <!-- AVIS -->
-    <div class="section"><h2><i class="fas fa-star"></i> Noter & Commenter</h2>
-        <select id="ratingAppSelect" onchange="chargerAvisApp()" style="width:100%;padding:8px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:#fff;font-size:12px;margin-bottom:8px;"><option value="">-- Choisir une app --</option></select>
-        <div style="text-align:center;margin:8px 0;" id="ratingStars">
-            <span class="rating-stars" onclick="noterApp(1)">☆</span><span class="rating-stars" onclick="noterApp(2)">☆</span><span class="rating-stars" onclick="noterApp(3)">☆</span><span class="rating-stars" onclick="noterApp(4)">☆</span><span class="rating-stars" onclick="noterApp(5)">☆</span>
-        </div>
-        <input type="text" id="avisInput" placeholder="Votre avis..." style="width:100%;padding:8px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:#fff;font-size:12px;margin-bottom:5px;">
-        <button class="btn-accent btn-sm" onclick="publierAvis()"><i class="fas fa-paper-plane"></i> Publier</button>
-        <div id="avisList" style="margin-top:8px;font-size:11px;color:var(--text2);"></div>
-    </div>
-
-    <!-- SUCCÈS -->
-    <div class="section"><h2><i class="fas fa-trophy"></i> Succès</h2>
-        <div id="achievementsList" style="display:flex;flex-wrap:wrap;gap:6px;"><p style="font-size:11px;color:var(--text2);">Téléchargez pour débloquer !</p></div>
+    <div class="section" id="catalogue"><h2><i class="fas fa-store"></i> Catalogue d'Applications</h2>
+        <div class="search-box"><i class="fas fa-search"></i><input type="search" id="searchInput" placeholder="Rechercher une application..." oninput="filtrerApps()"></div>
+        <div class="filters"><span class="filter active" onclick="filtrerCategorie('all',this)">📱 Toutes</span><span class="filter" onclick="filtrerCategorie('outils',this)">🛠️ Outils</span><span class="filter" onclick="filtrerCategorie('jeux',this)">🎮 Jeux</span><span class="filter" onclick="filtrerCategorie('social',this)">💬 Social</span><span class="filter" onclick="filtrerCategorie('productivite',this)">📊 Pro</span><span class="filter" onclick="filtrerCategorie('multimedia',this)">🎬 Média</span></div>
+        <div class="grid" id="appGrid"><div class="empty"><i class="fab fa-android"></i><h3>Chargement des applications...</h3></div></div>
     </div>
 
     <div class="ad-box" style="max-width:340px;margin:12px auto;min-height:250px;"><div class="ad-placeholder" style="height:230px;">📢 300x250 - ID: 204468294</div></div>
@@ -156,277 +119,195 @@
 <footer class="footer"><p>© 2024 OpenStore • Firebase 🔥 • Pubs: 204468294</p></footer>
 
 <!-- MODALS -->
-<div class="modal" id="maModal"><div class="modal-box"><h2>📤 Publier</h2><input type="text" id="appName" placeholder="Nom *"><input type="text" id="developer" placeholder="Développeur *"><input type="text" id="version" placeholder="Version *"><select id="category"><option value="outils">🛠️ Outils</option><option value="jeux">🎮 Jeux</option><option value="social">💬 Social</option><option value="productivite">📊 Productivité</option><option value="multimedia">🎬 Multimédia</option><option value="autre">📦 Autre</option></select><textarea id="description" placeholder="Description *"></textarea><div class="upload-area" id="uploadZone"><i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour APK</p></div><input type="file" id="apkFile" accept=".apk" style="display:none;"><div class="file-info" id="fileInfo"></div><div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div><div class="modal-buttons"><button class="btn-cancel" onclick="fermerModal()">Annuler</button><button class="btn-dev" onclick="publier()"><i class="fas fa-paper-plane"></i> Publier</button></div></div></div>
-<div class="modal" id="favorisModal"><div class="modal-box"><h2>❤️ Favoris</h2><div class="grid" id="favorisGrid"></div><button class="btn-accent btn-sm" onclick="fermerFavoris()">Fermer</button></div></div>
+<div class="modal" id="maModal"><div class="modal-box"><h2>📤 Publier une application (Dev)</h2>
+    <input type="text" id="appName" placeholder="Nom de l'application *">
+    <input type="text" id="developer" placeholder="Votre nom de développeur *">
+    <input type="text" id="version" placeholder="Version (ex: 1.0.0) *">
+    <select id="category"><option value="outils">🛠️ Outils</option><option value="jeux">🎮 Jeux</option><option value="social">💬 Social</option><option value="productivite">📊 Productivité</option><option value="multimedia">🎬 Multimédia</option><option value="autre">📦 Autre</option></select>
+    <textarea id="description" placeholder="Description de l'application *"></textarea>
+    <label style="color:var(--text2);font-size:11px;display:block;margin-bottom:4px;">Icône de l'application (optionnel)</label>
+    <div class="upload-area" id="iconUploadZone" style="margin-bottom:8px;" onclick="document.getElementById('iconFile').click()">
+        <i class="fas fa-image"></i><p>Cliquez pour l'icône (PNG)</p>
+    </div>
+    <input type="file" id="iconFile" accept="image/*" style="display:none;">
+    <div class="file-info" id="iconFileInfo"></div>
+    <label style="color:var(--text2);font-size:11px;display:block;margin-bottom:4px;">Fichier APK *</label>
+    <div class="upload-area" id="uploadZone" onclick="document.getElementById('apkFile').click()">
+        <i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour l'APK (max 50 MB)</p>
+    </div>
+    <input type="file" id="apkFile" accept=".apk" style="display:none;">
+    <div class="file-info" id="fileInfo"></div>
+    <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="modal-buttons"><button class="btn-cancel" onclick="fermerModal()">Annuler</button><button class="btn-dev" onclick="publierApp()"><i class="fas fa-paper-plane"></i> Publier</button></div>
+</div></div>
+<div class="modal" id="favorisModal"><div class="modal-box"><h2>❤️ Mes Favoris</h2><div class="grid" id="favorisGrid"></div><button class="btn-accent btn-sm" onclick="fermerFavoris()">Fermer</button></div></div>
 <div class="modal" id="historiqueModal"><div class="modal-box"><h2>🕐 Historique</h2><div id="historiqueContent"></div><button class="btn-accent btn-sm" onclick="fermerHistorique()">Fermer</button></div></div>
-<div class="modal" id="achievementsModal"><div class="modal-box"><h2>🏆 Succès</h2><div id="achievementsContent"></div><button class="btn-accent btn-sm" onclick="fermerAchievements()">Fermer</button></div></div>
+<div class="modal" id="dashboardModal"><div class="modal-box"><h2>📊 Dashboard</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="stat-card"><div class="val g" id="dashFav">0</div><div class="lbl">Favoris</div></div>
+        <div class="stat-card"><div class="val b" id="dashHist">0</div><div class="lbl">Historique</div></div>
+        <div class="stat-card"><div class="val o" id="dashDL">0</div><div class="lbl">Téléchargés</div></div>
+        <div class="stat-card"><div class="val g" id="dashAch">0</div><div class="lbl">Succès</div></div>
+    </div>
+    <button class="btn-accent btn-sm" onclick="fermerDashboard()">Fermer</button>
+</div></div>
 
 <script>
-try {
-// ============ CONFIG ============
 const FIREBASE_URL = "https://openstore-22f32-default-rtdb.firebaseio.com/apps.json";
-let apps = [], telechargements = JSON.parse(localStorage.getItem('os_dl') || '{}');
-let favoris = JSON.parse(localStorage.getItem('os_fav') || '[]');
-let historique = JSON.parse(localStorage.getItem('os_hist') || '[]');
-let userStats = JSON.parse(localStorage.getItem('os_userStats') || '{"time":0,"data":0,"achievements":[]}');
-let avis = JSON.parse(localStorage.getItem('os_avis') || '{}');
-let ratings = JSON.parse(localStorage.getItem('os_ratings') || '{}');
-let roleActuel = 'user', catalogueTab = 'all', noteActuelle = 0;
+let apps = [], telechargements = {}, favoris = [], historique = [], userStats = { achievements: [] };
 let appsFiltrees = [], recherche = '', categorie = 'all';
-let tempsDebut = Date.now();
-const icones = {outils:'fa-wrench',jeux:'fa-gamepad',social:'fa-comments',productivite:'fa-chart-bar',multimedia:'fa-film',autre:'fa-box',android:'fa-android'};
-const couleurs = {outils:'outils',jeux:'jeux',social:'social',productivite:'productivite',multimedia:'multimedia',autre:'autre'};
+let iconDataUrl = '';
 
-// ============ FIREBASE ============
+function initStorage() {
+    try { telechargements = JSON.parse(localStorage.getItem('os_dl') || '{}'); } catch(e) { telechargements = {}; }
+    try { favoris = JSON.parse(localStorage.getItem('os_fav') || '[]'); } catch(e) { favoris = []; }
+    try { historique = JSON.parse(localStorage.getItem('os_hist') || '[]'); } catch(e) { historique = []; }
+    try { userStats = JSON.parse(localStorage.getItem('os_userStats') || '{"achievements":[]}'); } catch(e) { userStats = { achievements: [] }; }
+}
+initStorage();
+
 async function loadApps() {
-    try { let r = await fetch(FIREBASE_URL); apps = (await r.json()) || []; nettoyageAuto(); }
-    catch (e) { apps = JSON.parse(localStorage.getItem('os_apps') || '[]'); }
-    majStats(); appliquerFiltres(); verifierURLApp(); majDashboard(); chargerAvisApp();
+    try { let r = await fetch(FIREBASE_URL); apps = (await r.json()) || []; if(apps.length===0) apps=JSON.parse(localStorage.getItem('os_apps')||'[]'); nettoyageAuto(); }
+    catch(e) { apps = JSON.parse(localStorage.getItem('os_apps') || '[]'); }
+    majStats(); appliquerFiltres(); verifierURLApp();
 }
 async function saveApps() {
-    try { await fetch(FIREBASE_URL, { method: 'PUT', body: JSON.stringify(apps) }); } catch (e) {}
+    try { await fetch(FIREBASE_URL, { method: 'PUT', body: JSON.stringify(apps) }); } catch(e) {}
     localStorage.setItem('os_apps', JSON.stringify(apps));
 }
 function nettoyageAuto() {
-    let aP = {};
-    apps.forEach(a => { let k = (a.nom||'').toLowerCase().trim(); if (!aP[k]) aP[k] = []; aP[k].push(a); });
-    Object.keys(aP).forEach(k => {
-        let g = aP[k].sort((a, b) => new Date(b.date||0) - new Date(a.date||0));
-        g.slice(1).forEach(o => { let i = apps.findIndex(a => a.id === o.id); if (i > -1) apps.splice(i, 1); });
-    });
+    let aP = {}; apps.forEach(a => { let k = (a.nom||'').toLowerCase().trim(); if(!aP[k]) aP[k] = []; aP[k].push(a); });
+    Object.keys(aP).forEach(k => { let g = aP[k].sort((a,b) => new Date(b.date||0) - new Date(a.date||0)); g.slice(1).forEach(o => { let i = apps.findIndex(a => a.id===o.id); if(i>-1) apps.splice(i,1); }); });
 }
-
-// ============ STATS ============
 function majStats() {
-    try {
-        let devs = {}; apps.forEach(a => { if (a.dev && !devs[a.dev]) devs[a.dev] = 0; if (a.dev) devs[a.dev]++; });
-        let td = 0; for (let k in telechargements) td += (telechargements[k] || 0);
-        let els = {
-            totalAppsH: apps.length, statApps: apps.length,
-            statDevs: Object.keys(devs).length, statDL: td
-        };
-        for (let id in els) { let el = document.getElementById(id); if (el) el.textContent = els[id]; }
-    } catch (e) { console.log('Stats error:', e.message); }
+    let devs = {}; apps.forEach(a => { if(a.dev&&!devs[a.dev]) devs[a.dev]=0; if(a.dev) devs[a.dev]++; });
+    let td = 0; for(let k in telechargements) td += (telechargements[k]||0);
+    document.getElementById('totalAppsH').textContent = apps.length;
+    document.getElementById('statApps').textContent = apps.length;
+    document.getElementById('statDevs').textContent = Object.keys(devs).length;
+    document.getElementById('statDL').textContent = td;
+    document.getElementById('dashDL').textContent = td;
+    document.getElementById('dashFav').textContent = favoris.length;
+    document.getElementById('dashHist').textContent = historique.length;
+    document.getElementById('dashAch').textContent = (userStats.achievements||[]).length;
 }
 
-// ============ DASHBOARD ============
-function majDashboard() {
-    try {
-        let td = 0; for (let k in telechargements) td += (telechargements[k] || 0);
-        let els = { dashFav: favoris.length, dashHist: historique.length, dashAch: userStats.achievements.length };
-        for (let id in els) { let el = document.getElementById(id); if (el) el.textContent = els[id]; }
-        let sel = document.getElementById('ratingAppSelect');
-        if (sel) sel.innerHTML = '<option value="">-- Choisir une app --</option>' + apps.map(a => '<option value="' + (a.id||0) + '">' + (a.nom||'Sans nom') + '</option>').join('');
-        afficherAchievements();
-    } catch (e) { console.log('Dashboard error:', e.message); }
+function toggleMenu() { document.getElementById('menuDropdown').classList.toggle('show'); }
+function fermerMenu() { document.getElementById('menuDropdown').classList.remove('show'); }
+document.addEventListener('click', function(e) { if(!e.target.closest('.menu-container')) fermerMenu(); });
+
+function ouvrirModal() { document.getElementById('maModal').classList.add('show'); fermerMenu(); }
+function fermerModal() {
+    document.getElementById('maModal').classList.remove('show');
+    document.getElementById('fileInfo').classList.remove('show');
+    document.getElementById('iconFileInfo').classList.remove('show');
+    document.getElementById('progressBar').classList.remove('active');
+    iconDataUrl = '';
 }
-
-// ============ RÔLES ============
-function changerRole(r) {
-    roleActuel = r;
-    let ind = document.getElementById('roleIndicator');
-    if (!ind) return;
-    ind.className = 'role-indicator ' + (r === 'dev' ? 'dev' : 'user');
-    ind.innerHTML = (r === 'dev' ? '<i class="fas fa-code"></i> Développeur ▾' : r === 'vip' ? '<i class="fas fa-crown"></i> VIP ▾' : '<i class="fas fa-user"></i> Utilisateur ▾');
-    fermerMenu();
-}
-
-// ============ MENU ============
-function toggleMenu() { let m = document.getElementById('menuDropdown'); if (m) m.classList.toggle('show'); }
-function fermerMenu() { let m = document.getElementById('menuDropdown'); if (m) m.classList.remove('show'); }
-document.addEventListener('click', e => { if (!e.target.closest('.menu-container')) fermerMenu(); });
-
-function buildMenu() {
-    let m = document.getElementById('menuDropdown');
-    if (!m) return;
-    m.innerHTML = `
-        <div class="menu-item" onclick="changerRole('user')"><i class="fas fa-user"></i> 👥 Utilisateur</div>
-        <div class="menu-item" onclick="changerRole('dev')"><i class="fas fa-code"></i> 👨‍💻 Développeur</div>
-        <hr class="menu-divider">
-        <div class="menu-item" onclick="ouvrirModal()"><i class="fas fa-upload"></i> 📤 Publier</div>
-        <div class="menu-item" onclick="ouvrirFavoris()"><i class="fas fa-heart"></i> ❤️ Favoris</div>
-        <div class="menu-item" onclick="ouvrirHistorique()"><i class="fas fa-history"></i> 🕐 Historique</div>
-        <hr class="menu-divider">
-        <div class="menu-item" onclick="changerRole('vip')"><i class="fas fa-crown"></i> 💎 VIP</div>
-        <div class="menu-item" onclick="genererRapport()"><i class="fas fa-file-alt"></i> 📊 Rapport</div>
-        <div class="menu-item" onclick="exportFavoris()"><i class="fas fa-download"></i> 📄 Exporter favoris</div>
-        <div class="menu-item" onclick="partagerSite()"><i class="fas fa-share-alt"></i> 📤 Partager le site</div>`;
-}
-
-// ============ TABS ============
-function changerCatalogueTab(t, el) {
-    catalogueTab = t;
-    document.querySelectorAll('.tab-nav').forEach(b => b.classList.remove('active'));
-    if (el) el.classList.add('active');
-    appliquerFiltres();
-}
-
-// ============ MODALS ============
 function ouvrirFavoris() {
     let g = document.getElementById('favorisGrid');
-    if (!g) return;
-    let fav = apps.filter(a => favoris.includes(a.id));
-    g.innerHTML = fav.length === 0 ? '<p style="color:var(--text2);">Aucun favori</p>' : fav.map(a => createCard(a, 'user')).join('');
-    let m = document.getElementById('favorisModal'); if (m) m.classList.add('show');
-    fermerMenu();
+    g.innerHTML = apps.filter(a => favoris.includes(a.id)).length === 0 ? '<p style="color:var(--text2);">Aucun favori</p>' : '<div class="grid">' + apps.filter(a => favoris.includes(a.id)).map(a => createCard(a)).join('') + '</div>';
+    document.getElementById('favorisModal').classList.add('show'); fermerMenu();
 }
-function fermerFavoris() { let m = document.getElementById('favorisModal'); if (m) m.classList.remove('show'); }
-function toggleFavori(id) {
-    let i = favoris.indexOf(id);
-    if (i > -1) favoris.splice(i, 1); else favoris.push(id);
-    localStorage.setItem('os_fav', JSON.stringify(favoris));
-    appliquerFiltres(); majDashboard();
-}
+function fermerFavoris() { document.getElementById('favorisModal').classList.remove('show'); }
 function ouvrirHistorique() {
     let c = document.getElementById('historiqueContent');
-    if (!c) return;
-    c.innerHTML = historique.length === 0 ? '<p>Aucun</p>' : historique.slice(0, 30).map(h => '<div style="padding:6px;background:var(--bg);border-radius:6px;margin-bottom:4px;font-size:11px;">📥 <strong>' + (h.nom||'') + '</strong> - ' + new Date(h.date||Date.now()).toLocaleDateString() + '</div>').join('');
-    let m = document.getElementById('historiqueModal'); if (m) m.classList.add('show');
-    fermerMenu();
+    c.innerHTML = historique.length === 0 ? '<p>Aucun</p>' : historique.slice(0,30).map(h => '<div style="padding:6px;background:var(--bg);border-radius:6px;margin-bottom:4px;font-size:11px;">📥 <strong>'+(h.nom||'')+'</strong> - '+new Date(h.date||Date.now()).toLocaleDateString()+'</div>').join('');
+    document.getElementById('historiqueModal').classList.add('show'); fermerMenu();
 }
-function fermerHistorique() { let m = document.getElementById('historiqueModal'); if (m) m.classList.remove('show'); }
+function fermerHistorique() { document.getElementById('historiqueModal').classList.remove('show'); }
+function ouvrirDashboard() { majStats(); document.getElementById('dashboardModal').classList.add('show'); fermerMenu(); }
+function fermerDashboard() { document.getElementById('dashboardModal').classList.remove('show'); }
 
-// ============ ACHIEVEMENTS ============
-function verifierAchievements() {
-    let td = 0; for (let k in telechargements) td += (telechargements[k] || 0);
-    if (td >= 1 && !userStats.achievements.includes('first_dl')) { userStats.achievements.push('first_dl'); toast('🥇 Premier téléchargement !', 'success'); }
-    if (td >= 10 && !userStats.achievements.includes('10_dl')) { userStats.achievements.push('10_dl'); toast('📥 10 téléchargements !', 'success'); }
-    if (td >= 50 && !userStats.achievements.includes('50_dl')) { userStats.achievements.push('50_dl'); toast('🔥 50 téléchargements !', 'success'); }
-    if (favoris.length >= 5 && !userStats.achievements.includes('5_fav')) { userStats.achievements.push('5_fav'); toast('❤️ 5 favoris !', 'success'); }
-    if (historique.length >= 20 && !userStats.achievements.includes('20_hist')) { userStats.achievements.push('20_hist'); toast('📋 20 historiques !', 'success'); }
-    localStorage.setItem('os_userStats', JSON.stringify(userStats));
-}
-function afficherAchievements() {
-    let all = [
-        { id: 'first_dl', icon: '🥇', name: 'Premier pas' }, { id: '10_dl', icon: '📥', name: 'Collectionneur' },
-        { id: '50_dl', icon: '🔥', name: 'Accro' }, { id: '5_fav', icon: '❤️', name: 'Amoureux' }, { id: '20_hist', icon: '📋', name: 'Historien' }
-    ];
-    let ac = document.getElementById('achievementsContent');
-    if (ac) ac.innerHTML = all.map(a => '<div class="achievement-badge ' + (userStats.achievements.includes(a.id) ? 'unlocked' : 'locked') + '">' + a.icon + ' ' + a.name + (userStats.achievements.includes(a.id) ? ' ✅' : ' 🔒') + '</div>').join('');
-    let al = document.getElementById('achievementsList');
-    if (al) {
-        let unlocked = all.filter(a => userStats.achievements.includes(a.id));
-        al.innerHTML = unlocked.length === 0 ? '<p style="font-size:11px;color:var(--text2);">Téléchargez pour débloquer !</p>' : unlocked.map(a => '<span class="achievement-badge unlocked">' + a.icon + ' ' + a.name + '</span>').join('');
+function createCard(a) {
+    if(!a) return '';
+    let dl = telechargements[a.id] || 0, isFav = favoris.includes(a.id), isNew = (Date.now() - new Date(a.date||Date.now()).getTime()) < 86400000;
+    let url = a.url || '';
+    
+    // ICÔNE : utiliser l'icône personnalisée ou l'icône Android par défaut
+    let iconHtml = '';
+    if (a.icon && a.icon !== '') {
+        iconHtml = '<div class="card-icon"><img src="' + a.icon + '" alt="Icône de ' + (a.nom||'l\'app') + '" onerror="this.parentElement.innerHTML=\'<i class=\\\'fab fa-android default-icon\\\'></i>\';"></div>';
+    } else {
+        iconHtml = '<div class="card-icon"><i class="fab fa-android default-icon"></i></div>';
     }
-}
-function ouvrirAchievements() { afficherAchievements(); let m = document.getElementById('achievementsModal'); if (m) m.classList.add('show'); }
-function fermerAchievements() { let m = document.getElementById('achievementsModal'); if (m) m.classList.remove('show'); }
-
-// ============ AVIS ============
-function noterApp(n) {
-    noteActuelle = n;
-    document.querySelectorAll('#ratingStars .rating-stars').forEach((s, i) => { s.textContent = i < n ? '★' : '☆'; s.style.color = i < n ? '#f59e0b' : 'var(--text2)'; });
-}
-function publierAvis() {
-    let appId = document.getElementById('ratingAppSelect')?.value;
-    let txt = document.getElementById('avisInput')?.value?.trim();
-    if (!appId || !txt || noteActuelle === 0) { toast('Sélectionnez une app, notez et écrivez', 'error'); return; }
-    if (!avis[appId]) avis[appId] = [];
-    avis[appId].unshift({ txt, note: noteActuelle, date: new Date().toISOString(), user: 'Utilisateur' });
-    ratings[appId] = noteActuelle;
-    localStorage.setItem('os_avis', JSON.stringify(avis));
-    localStorage.setItem('os_ratings', JSON.stringify(ratings));
-    let inp = document.getElementById('avisInput'); if (inp) inp.value = '';
-    noteActuelle = 0;
-    document.querySelectorAll('#ratingStars .rating-stars').forEach(s => { s.textContent = '☆'; s.style.color = 'var(--text2)'; });
-    chargerAvisApp();
-    toast('✅ Avis publié !', 'success');
-}
-function chargerAvisApp() {
-    let appId = document.getElementById('ratingAppSelect')?.value;
-    let div = document.getElementById('avisList');
-    if (!div) return;
-    if (!appId || !avis[appId]) { div.innerHTML = '<p>Aucun avis</p>'; return; }
-    div.innerHTML = avis[appId].slice(0, 5).map(a => '<div style="padding:6px;background:var(--bg);border-radius:6px;margin:3px 0;">' + '★'.repeat(a.note||0) + '☆'.repeat(5-(a.note||0)) + ' <strong>' + (a.user||'') + '</strong>: ' + (a.txt||'') + '<br><small>' + new Date(a.date||Date.now()).toLocaleString() + '</small></div>').join('');
+    
+    return '<div class="card" id="card-'+(a.id||0)+'">'+
+        '<div class="card-header">'+iconHtml+
+            '<div><div class="card-title">'+(a.nom||'Sans nom')+(isNew?' <span class="badge badge-new">NEW</span>':'')+'</div>'+
+            '<div class="card-dev">Par '+(a.dev||'Inconnu')+'</div></div></div>'+
+        '<p class="card-desc">'+(a.desc||'Aucune description')+'</p>'+
+        '<div class="card-meta"><span class="card-ver">📦 v'+(a.ver||'1.0')+'</span><span class="card-dl">📥 '+dl+' téléch.</span></div>'+
+        '<a class="btn-download-big" href="'+(url&&url!=='#'&&!url.startsWith('#fichier')?url:'#')+'" '+(url&&url!=='#'&&!url.startsWith('#fichier')?'target="_blank" rel="noopener noreferrer"':'')+' onclick="return telechargerApp(\''+url+'\',\''+(a.nom||'')+'\','+(a.id||0)+')"><i class="fas fa-download"></i> TÉLÉCHARGER</a>'+
+        '<div class="card-actions-row">'+
+            '<button class="btn-icon-action btn-wa" onclick="event.preventDefault();partagerApp('+(a.id||0)+',\'whatsapp\')"><i class="fab fa-whatsapp"></i></button>'+
+            '<button class="btn-icon-action btn-tw" onclick="event.preventDefault();partagerApp('+(a.id||0)+',\'twitter\')"><i class="fab fa-twitter"></i></button>'+
+            '<button class="btn-icon-action btn-fb" onclick="event.preventDefault();partagerApp('+(a.id||0)+',\'facebook\')"><i class="fab fa-facebook"></i></button>'+
+            '<button class="btn-icon-action btn-link" onclick="event.preventDefault();copierLienApp('+(a.id||0)+')"><i class="fas fa-link"></i></button>'+
+        '</div>'+
+        '<button class="btn btn-sm" style="margin-top:6px;width:100%;background:transparent;border:1px solid var(--border);color:'+(isFav?'#ef4444':'var(--text2)')+';" onclick="event.preventDefault();toggleFavori('+(a.id||0)+')"><i class="fas fa-heart"></i> '+(isFav?'Retiré des favoris':'Ajouter aux favoris')+'</button>'+
+    '</div>';
 }
 
-// ============ CARTES ============
-function createCard(a, type) {
-    try {
-        let dl = telechargements[a.id] || 0;
-        let catClass = couleurs[a.cat] || 'android';
-        let iconClass = icones[a.cat] || 'fa-android';
-        let isFav = favoris.includes(a.id);
-        let isNew = (Date.now() - new Date(a.date||Date.now()).getTime()) < 86400000;
-        let rating = ratings[a.id] || 0;
-        let starsHtml = rating > 0 ? '★'.repeat(rating) + '☆'.repeat(5-rating) : '';
-        
-        return `<div class="card ${type==='vip'?'vip-card':'dev-card'}" id="card-${a.id}">
-            <div class="card-header">
-                <div class="card-icon ${catClass}"><i class="fab ${iconClass}"></i></div>
-                <div>
-                    <div class="card-title">${a.nom||''}${a.vip==1?' <span class="badge badge-vip">VIP</span>':''}${isNew?' <span class="badge badge-new">NEW</span>':''}</div>
-                    <div class="card-dev">par ${a.dev||''} ${starsHtml}</div>
-                </div>
-            </div>
-            <p class="card-desc">${a.desc||''}</p>
-            <div class="card-meta"><span class="card-ver">📦 v${a.ver||'1.0'}</span><span class="card-dl">📥 ${dl}</span></div>
-            <button class="btn-download-big" onclick="telechargerApp('${a.url||'#'}','${a.nom||''}',${a.id||0})"><i class="fas fa-download"></i> TÉLÉCHARGER</button>
-            <div class="card-actions-row">
-                <button class="btn-icon-action btn-wa" onclick="partagerApp(${a.id},'whatsapp')"><i class="fab fa-whatsapp"></i></button>
-                <button class="btn-icon-action btn-tw" onclick="partagerApp(${a.id},'twitter')"><i class="fab fa-twitter"></i></button>
-                <button class="btn-icon-action btn-fb" onclick="partagerApp(${a.id},'facebook')"><i class="fab fa-facebook"></i></button>
-                <button class="btn-icon-action btn-link" onclick="copierLienApp(${a.id})"><i class="fas fa-link"></i></button>
-            </div>
-            <button class="btn btn-sm" style="margin-top:6px;width:100%;background:transparent;border:1px solid var(--border);color:${isFav?'#ef4444':'var(--text2)'};" onclick="toggleFavori(${a.id})"><i class="fas fa-heart"></i> ${isFav?'Retiré':'Favoris'}</button>
-        </div>`;
-    } catch (e) { return ''; }
+function telechargerApp(url, nom, id) {
+    event.preventDefault(); event.stopPropagation();
+    if(!url||url==='#'||url.startsWith('#fichier')||url==='#demo') {
+        toast('📥 Simulation : '+(nom||'App')+' (APK réel à uploader)', 'success');
+        if(id) { telechargements[id] = (telechargements[id]||0)+1; localStorage.setItem('os_dl', JSON.stringify(telechargements)); }
+        historique.unshift({nom:nom||'App', date:new Date().toISOString()}); localStorage.setItem('os_hist', JSON.stringify(historique));
+        majStats(); appliquerFiltres(); verifierAchievements(); return false;
+    }
+    if(id) { telechargements[id] = (telechargements[id]||0)+1; localStorage.setItem('os_dl', JSON.stringify(telechargements)); }
+    historique.unshift({nom:nom||'App', date:new Date().toISOString()}); localStorage.setItem('os_hist', JSON.stringify(historique));
+    toast('📥 '+(nom||'App')+' - Téléchargement démarré !', 'success');
+    setTimeout(function(){ window.open(url, '_blank', 'noopener,noreferrer'); }, 300);
+    setTimeout(function(){ majStats(); appliquerFiltres(); verifierAchievements(); }, 1500);
+    return false;
 }
 
-// ============ PARTAGE ============
+function toggleFavori(id) {
+    let i = favoris.indexOf(id);
+    i>-1 ? favoris.splice(i,1) : favoris.push(id);
+    toast(i>-1?'Retiré des favoris':'❤️ Ajouté aux favoris !', 'success');
+    localStorage.setItem('os_fav', JSON.stringify(favoris)); appliquerFiltres(); majStats();
+}
+
 function partagerApp(id, reseau) {
-    let app = apps.find(a => a.id === id); if (!app) return;
-    let url = 'https://palukugloire401-cmd.github.io/Boutique/?app=' + id;
-    let texte = '📱 Télécharge ' + (app.nom||'cette app') + ' sur OpenStore ! ' + url;
-    let liens = { whatsapp: 'https://wa.me/?text=' + encodeURIComponent(texte), twitter: 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(texte), facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) };
-    if (liens[reseau]) window.open(liens[reseau], '_blank', 'noopener,noreferrer');
+    let app = apps.find(a => a.id===id); if(!app) return;
+    let url = 'https://palukugloire401-cmd.github.io/Boutique/?app='+id;
+    let texte = encodeURIComponent('📱 Télécharge '+(app.nom||'cette app')+' sur OpenStore ! '+url);
+    let liens = {whatsapp:'https://wa.me/?text='+texte, twitter:'https://twitter.com/intent/tweet?text='+texte, facebook:'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url)};
+    if(liens[reseau]) window.open(liens[reseau], '_blank', 'noopener,noreferrer');
 }
 function copierLienApp(id) {
-    let url = 'https://palukugloire401-cmd.github.io/Boutique/?app=' + id;
-    if (navigator.clipboard) { navigator.clipboard.writeText(url).then(() => toast('📋 Lien copié !', 'success')).catch(() => {}); }
-    else { prompt('Copiez :', url); }
+    let url = 'https://palukugloire401-cmd.github.io/Boutique/?app='+id;
+    if(navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ toast('📋 Lien copié !', 'success'); }).catch(function(){ prompt('Copiez :', url); });
+    else prompt('Copiez :', url);
 }
 
-// ============ FILTRES ============
-function filtrerApps() { recherche = (document.getElementById('searchInput')?.value || '').trim().toLowerCase(); appliquerFiltres(); }
-function filtrerCategorie(cat, el) {
-    document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
-    if (el) el.classList.add('active'); categorie = cat; appliquerFiltres();
+function verifierAchievements() {
+    let td = 0; for(let k in telechargements) td += (telechargements[k]||0);
+    if(td>=1&&!userStats.achievements.includes('first')){ userStats.achievements.push('first'); toast('🥇 Premier téléchargement !', 'success'); }
+    if(td>=10&&!userStats.achievements.includes('10dl')){ userStats.achievements.push('10dl'); toast('📥 10 téléchargements !', 'success'); }
+    localStorage.setItem('os_userStats', JSON.stringify(userStats));
 }
+
+function filtrerApps() { recherche = (document.getElementById('searchInput')?.value||'').trim().toLowerCase(); appliquerFiltres(); }
+function filtrerCategorie(cat, el) { document.querySelectorAll('.filter').forEach(f => f.classList.remove('active')); if(el) el.classList.add('active'); categorie=cat; appliquerFiltres(); }
 function appliquerFiltres() {
-    appsFiltrees = [...apps];
-    if (categorie !== 'all') appsFiltrees = appsFiltrees.filter(a => a.cat === categorie);
-    if (recherche) appsFiltrees = appsFiltrees.filter(a => (a.nom||'').toLowerCase().includes(recherche) || (a.dev||'').toLowerCase().includes(recherche));
-    if (catalogueTab === 'recent') appsFiltrees.sort((a, b) => new Date(b.date||0) - new Date(a.date||0));
-    else if (catalogueTab === 'popular') appsFiltrees.sort((a, b) => (telechargements[b.id]||0) - (telechargements[a.id]||0));
-    else if (catalogueTab === 'vip') appsFiltrees = appsFiltrees.filter(a => a.vip == 1);
-    else appsFiltrees.sort((a, b) => new Date(b.date||0) - new Date(a.date||0));
+    appsFiltrees = apps.slice();
+    if(categorie!=='all') appsFiltrees = appsFiltrees.filter(a => a.cat===categorie);
+    if(recherche) appsFiltrees = appsFiltrees.filter(a => (a.nom||'').toLowerCase().includes(recherche)||(a.dev||'').toLowerCase().includes(recherche));
+    appsFiltrees.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
     afficherApps();
 }
 function afficherApps() {
-    let g = document.getElementById('appGrid'); if (!g) return;
-    let pa = appsFiltrees.slice(0, 12);
-    g.innerHTML = pa.length === 0 ? '<div class="empty"><i class="fab fa-android"></i><h3>Aucune app</h3><button class="btn-accent btn-sm" onclick="ouvrirModal()">📤 Publier</button></div>' : pa.map(a => createCard(a, 'dev')).join('');
+    let g = document.getElementById('appGrid'); if(!g) return;
+    let pa = appsFiltrees.slice(0,12);
+    g.innerHTML = pa.length===0 ? '<div class="empty"><i class="fab fa-android"></i><h3>Aucune application trouvée</h3><p>Les développeurs n\'ont pas encore publié.</p></div>' : pa.map(a => createCard(a)).join('');
 }
 
-// ============ TÉLÉCHARGEMENT ============
-function telechargerApp(url, nom, id) {
-    if (!url || url === '#' || (url||'').startsWith('#fichier')) {
-        toast('📥 ' + (nom||'App') + ' - Firebase Storage à configurer', 'success');
-        if (id) { telechargements[id] = (telechargements[id]||0) + 1; localStorage.setItem('os_dl', JSON.stringify(telechargements)); }
-        historique.unshift({ nom, date: new Date().toISOString() }); localStorage.setItem('os_hist', JSON.stringify(historique));
-        majStats(); appliquerFiltres(); majDashboard(); verifierAchievements();
-        return;
-    }
-    if (id) { telechargements[id] = (telechargements[id]||0) + 1; localStorage.setItem('os_dl', JSON.stringify(telechargements)); }
-    historique.unshift({ nom, date: new Date().toISOString() }); localStorage.setItem('os_hist', JSON.stringify(historique));
-    toast('📥 ' + (nom||'App') + ' téléchargé !', 'success');
-    setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 500);
-    setTimeout(() => { majStats(); afficherApps(); majDashboard(); verifierAchievements(); }, 1500);
-}
-
-// ============ PUBLICATION ============
-async function publier() {
+function publierApp() {
     try {
         let n = document.getElementById('appName')?.value?.trim();
         let d = document.getElementById('developer')?.value?.trim();
@@ -434,122 +315,96 @@ async function publier() {
         let c = document.getElementById('category')?.value;
         let desc = document.getElementById('description')?.value?.trim();
         let f = document.getElementById('apkFile')?.files?.[0];
-        if (!n || !d || !v || !desc) { toast('Remplissez tous les champs', 'error'); return; }
+        if(!n||!d||!v||!desc){ toast('Remplissez tous les champs obligatoires', 'error'); return; }
         
-        let btn = event?.target;
-        if (btn) { btn.disabled = true; btn.textContent = '⏳...'; }
-        let pb = document.getElementById('progressBar'); if (pb) pb.classList.add('active');
+        let btn = event?.target; if(btn){ btn.disabled=true; btn.textContent='⏳...'; }
+        let pb = document.getElementById('progressBar'); if(pb) pb.classList.add('active');
         let pf = document.getElementById('progressFill');
-        let p = 0;
-        let iv = setInterval(() => { p += Math.random() * 25; if (p > 90) p = 90; if (pf) pf.style.width = p + '%'; }, 300);
+        let p=0, iv=setInterval(function(){ p+=Math.random()*20; if(p>90) p=90; if(pf) pf.style.width=p+'%'; },300);
         
-        let existants = apps.filter(a => (a.nom||'').toLowerCase().trim() === n.toLowerCase().trim() && (a.dev||'').toLowerCase().trim() === d.toLowerCase().trim());
-        existants.forEach(o => { let i = apps.findIndex(a => a.id === o.id); if (i > -1) apps.splice(i, 1); });
-        apps.unshift({ id: Date.now(), nom: n, dev: d, ver: v, cat: c, desc: desc, url: f ? '#fichier:' + f.name : '#demo', vip: 0, date: new Date().toISOString() });
-        await saveApps();
+        let existants = apps.filter(a => (a.nom||'').toLowerCase().trim()===n.toLowerCase().trim()&&(a.dev||'').toLowerCase().trim()===d.toLowerCase().trim());
+        existants.forEach(o => { let i = apps.findIndex(a => a.id===o.id); if(i>-1) apps.splice(i,1); });
         
-        setTimeout(() => {
-            clearInterval(iv); if (pf) pf.style.width = '100%';
-            toast('✅ ' + n + ' v' + v + ' publiée !', 'success');
-            fermerModal();
-            if (btn) { btn.disabled = false; btn.textContent = 'Publier'; }
-            if (pb) pb.classList.remove('active');
-            if (pf) pf.style.width = '0%';
-            majStats(); appliquerFiltres(); majDashboard();
-        }, 1500);
-    } catch (e) { toast('Erreur: ' + e.message, 'error'); }
+        apps.unshift({ id:Date.now(), nom:n, dev:d, ver:v, cat:c, desc:desc, icon:iconDataUrl, url:f?'#fichier:'+f.name:'#demo', vip:0, date:new Date().toISOString() });
+        saveApps();
+        
+        setTimeout(function(){
+            clearInterval(iv); if(pf) pf.style.width='100%';
+            toast('✅ '+n+' v'+v+' publiée !'+(existants.length>0?' (ancienne version remplacée)':''), 'success');
+            fermerModal(); if(btn){ btn.disabled=false; btn.textContent='Publier'; }
+            if(pb) pb.classList.remove('active'); if(pf) setTimeout(function(){ pf.style.width='0%'; },500);
+            majStats(); appliquerFiltres();
+        },1500);
+    } catch(e) { toast('Erreur: '+(e.message||'Inconnue'), 'error'); }
 }
 
-// ============ SEO ============
 function verifierURLApp() {
     try {
         let params = new URLSearchParams(window.location.search), appId = params.get('app');
-        if (appId) {
-            let app = apps.find(a => a.id == appId);
-            if (app) {
-                document.title = (app.nom||'App') + ' - OpenStore';
-                let ogT = document.getElementById('ogTitle'); if (ogT) ogT.setAttribute('content', (app.nom||'App') + ' - OpenStore');
-                let ogD = document.getElementById('ogDesc'); if (ogD) ogD.setAttribute('content', 'Téléchargez ' + (app.nom||'') + ' par ' + (app.dev||''));
-                setTimeout(() => {
-                    let carte = document.getElementById('card-' + appId);
-                    if (carte) { carte.scrollIntoView({ behavior: 'smooth' }); carte.classList.add('highlight'); }
-                }, 1000);
+        if(appId) {
+            let app = apps.find(a => a.id==appId);
+            if(app) {
+                document.title = (app.nom||'App')+' - OpenStore';
+                setTimeout(function(){
+                    let carte = document.getElementById('card-'+appId);
+                    if(carte){ carte.scrollIntoView({behavior:'smooth'}); carte.style.border='2px solid var(--accent)'; carte.style.boxShadow='0 0 40px rgba(0,230,118,0.3)'; }
+                },1000);
             }
         }
-    } catch (e) {}
+    } catch(e) {}
 }
 
-// ============ UTILITAIRES ============
-function ouvrirModal() { let m = document.getElementById('maModal'); if (m) m.classList.add('show'); fermerMenu(); }
-function fermerModal() {
-    let m = document.getElementById('maModal'); if (m) m.classList.remove('show');
-    let fi = document.getElementById('fileInfo'); if (fi) fi.classList.remove('show');
-    let pb = document.getElementById('progressBar'); if (pb) pb.classList.remove('active');
-}
 function toast(m, t) {
-    let d = document.createElement('div');
-    d.className = 'toast' + (t === 'error' ? ' error' : '');
-    d.textContent = (t === 'error' ? '❌ ' : '✅ ') + m;
-    let tc = document.getElementById('toastContainer'); if (tc) tc.appendChild(d);
-    setTimeout(() => { try { d.remove(); } catch (e) {} }, 3500);
+    try {
+        let d = document.createElement('div'); d.className = 'toast'+(t==='error'?' error':'');
+        d.textContent = (t==='error'?'❌ ':'✅ ')+m;
+        document.getElementById('toastContainer').appendChild(d);
+        setTimeout(function(){ try{d.remove();}catch(e){} },3500);
+    } catch(e) {}
 }
 function genererRapport() {
-    let td = 0; for (let k in telechargements) td += (telechargements[k]||0);
-    let rapport = '📊 RAPPORT OPENSTORE\n━━━━━━━━━━\n📥 Téléch: ' + td + '\n❤️ Favoris: ' + favoris.length + '\n📋 Historique: ' + historique.length + '\n🏆 Succès: ' + userStats.achievements.length + '\n⏱️ Temps: ' + Math.floor(userStats.time/60) + 'min\n━━━━━━━━━━\n📅 ' + new Date().toLocaleDateString();
-    alert(rapport);
-}
-function exportFavoris() {
-    let data = apps.filter(a => favoris.includes(a.id)).map(a => (a.nom||'') + ' - ' + (a.dev||'')).join('\n');
-    if (!data) { toast('Aucun favori', 'error'); return; }
-    let blob = new Blob([data], { type: 'text/plain' });
-    let url = URL.createObjectURL(blob);
-    let a = document.createElement('a'); a.href = url; a.download = 'favoris.txt'; a.click();
-    toast('📄 Exporté !', 'success');
+    let td=0; for(let k in telechargements) td+=(telechargements[k]||0);
+    alert('📊 RAPPORT\n━━━━━━\n📥 Téléch: '+td+'\n❤️ Favoris: '+favoris.length+'\n📋 Historique: '+historique.length+'\n🏆 Succès: '+(userStats.achievements||[]).length+'\n━━━━━━\n📅 '+new Date().toLocaleDateString());
+    fermerMenu();
 }
 function partagerSite() {
-    let url = 'https://palukugloire401-cmd.github.io/Boutique/';
-    let texte = '📱 OpenStore - Store Android gratuit ! ' + url;
-    if (navigator.share) { navigator.share({ title: 'OpenStore', text: texte, url: url }).catch(() => {}); }
-    else { window.open('https://wa.me/?text=' + encodeURIComponent(texte), '_blank'); }
+    let url='https://palukugloire401-cmd.github.io/Boutique/', texte='📱 OpenStore - Store Android gratuit ! '+url;
+    if(navigator.share) navigator.share({title:'OpenStore', text:texte, url:url}).catch(function(){});
+    else window.open('https://wa.me/?text='+encodeURIComponent(texte), '_blank');
+    fermerMenu();
 }
 
-// ============ INIT ============
-document.addEventListener('DOMContentLoaded', async function () {
-    console.log('🚀 OpenStore Pro');
-    buildMenu();
-    await loadApps();
-    majDashboard();
-    verifierAchievements();
-    afficherAchievements();
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 OpenStore');
+    loadApps();
     
-    let uz = document.getElementById('uploadZone');
-    if (uz) uz.addEventListener('click', () => { let af = document.getElementById('apkFile'); if (af) af.click(); });
-    
-    let af = document.getElementById('apkFile');
-    if (af) af.addEventListener('change', function () {
+    // Upload APK
+    document.getElementById('uploadZone').addEventListener('click', function(e){ e.stopPropagation(); document.getElementById('apkFile').click(); });
+    document.getElementById('apkFile').addEventListener('change', function(){
         let f = this.files?.[0];
-        if (f) {
-            let fi = document.getElementById('fileInfo');
-            if (fi) { fi.textContent = '✅ ' + f.name + ' (' + (f.size/1024/1024).toFixed(1) + ' MB)'; fi.classList.add('show'); }
+        if(f){ document.getElementById('fileInfo').textContent='✅ '+f.name+' ('+(f.size/1024/1024).toFixed(1)+' MB)'; document.getElementById('fileInfo').classList.add('show'); }
+    });
+    
+    // Upload icône
+    document.getElementById('iconFile').addEventListener('change', function(){
+        let f = this.files?.[0];
+        if(f){
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                iconDataUrl = e.target.result;
+                document.getElementById('iconFileInfo').textContent = '✅ Icône chargée';
+                document.getElementById('iconFileInfo').classList.add('show');
+            };
+            reader.readAsDataURL(f);
         }
     });
     
-    ['maModal','favorisModal','historiqueModal','achievementsModal'].forEach(id => {
+    ['maModal','favorisModal','historiqueModal','dashboardModal'].forEach(function(id){
         let m = document.getElementById(id);
-        if (m) m.addEventListener('click', function (e) { if (e.target === this) this.classList.remove('show'); });
+        if(m) m.addEventListener('click', function(e){ if(e.target===this) this.classList.remove('show'); });
     });
-    
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') document.querySelectorAll('.modal.show').forEach(m => m.classList.remove('show'));
-        if (e.ctrlKey && e.key === 'f') { e.preventDefault(); let si = document.getElementById('searchInput'); if (si) si.focus(); }
-    });
-    
-    // Temps d'écran
-    setInterval(() => { userStats.time += 10; if (userStats.time % 60 === 0) localStorage.setItem('os_userStats', JSON.stringify(userStats)); }, 10000);
-    window.addEventListener('beforeunload', () => { localStorage.setItem('os_userStats', JSON.stringify(userStats)); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.querySelectorAll('.modal.show').forEach(function(m){ m.classList.remove('show'); }); });
 });
-
-} catch (e) { console.error('Erreur globale:', e.message); }
 </script>
 </body>
 </html>
