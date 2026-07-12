@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="OpenStore - Téléchargez des Apps Android" id="ogTitle">
-    <meta property="og:description" content="Store Android intelligent avec Firebase. Publiez et téléchargez des apps gratuitement." id="ogDesc">
+    <meta property="og:description" content="Store Android intelligent avec Firebase" id="ogDesc">
     <meta property="og:image" content="https://palukugloire401-cmd.github.io/Boutique/icon-store.png" id="ogImage">
     <meta property="og:url" content="https://palukugloire401-cmd.github.io/Boutique/" id="ogUrl">
-    <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://palukugloire401-cmd.github.io/Boutique/" id="canonical">
     <title>OpenStore - Téléchargez des Apps Android</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- START.IO SDK -->
+    <script src="https://cdn.start.io/sdk/sdk.js"></script>
+    
     <style>
         :root{--bg:#070a13;--surface:#111827;--accent:#00e676;--accent2:#00ff84;--text:#e0e0e0;--text2:#9ca3af;--border:#1f2937;--danger:#ef4444;--dev:#3b82f6;--user:#f59e0b;--vip:#8b5cf6;--radius:16px}
         *{margin:0;padding:0;box-sizing:border-box}
@@ -25,12 +28,16 @@
         .btn-dev{background:var(--dev);color:#fff}.btn-dev:hover{background:#2563eb;transform:translateY(-2px)}
         .btn-sm{padding:5px 10px;font-size:10px}
         .menu-container{position:relative}.menu-btn{background:transparent;border:1px solid var(--border);color:#fff;width:35px;height:35px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;padding:0}.menu-btn:hover{background:var(--surface);border-color:var(--accent)}
-        .menu-dropdown{display:none;position:absolute;top:100%;right:0;background:var(--surface);border:1px solid var(--border);border-radius:12px;min-width:220px;padding:8px;z-index:200;margin-top:5px;box-shadow:0 10px 30px rgba(0,0,0,0.5);max-height:400px;overflow-y:auto}.menu-dropdown.show{display:block}
+        .menu-dropdown{display:none;position:absolute;top:100%;right:0;background:var(--surface);border:1px solid var(--border);border-radius:12px;min-width:220px;padding:8px;z-index:200;margin-top:5px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}.menu-dropdown.show{display:block}
         .menu-item{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--text);width:100%;border:none;background:none;text-align:left}.menu-item:hover{background:var(--bg)}.menu-divider{border:none;border-top:1px solid var(--border);margin:5px 0}
         .container{max-width:1100px;margin:0 auto;padding:10px 15px}
-        .ad-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:12px 0;padding:12px;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;position:relative}
-        .ad-box::before{content:'Sponsorisé';position:absolute;top:4px;right:8px;font-size:8px;color:var(--text2);text-transform:uppercase;letter-spacing:2px;background:rgba(0,0,0,0.5);padding:2px 6px;border-radius:6px;z-index:1}
-        .ad-placeholder{color:var(--text2);border:2px dashed var(--border);border-radius:8px;padding:15px;width:100%;font-size:13px}
+        
+        /* PUBS START.IO */
+        .ad-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:12px 0;padding:0;text-align:center;min-height:90px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+        .ad-container::before{content:'Publicité';position:absolute;top:4px;right:8px;font-size:8px;color:var(--text2);text-transform:uppercase;letter-spacing:2px;background:rgba(0,0,0,0.5);padding:2px 6px;border-radius:6px;z-index:1}
+        .ad-banner-728{width:100%;max-width:728px;height:90px;margin:0 auto}
+        .ad-banner-300{width:300px;height:250px;margin:0 auto}
+        
         .hero{text-align:center;background:linear-gradient(135deg,#111827,#1a2332);border:1px solid var(--border);border-radius:var(--radius);padding:25px 15px;margin:12px 0}
         .hero h1{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:26px;margin:10px 0}
         .section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px;margin:12px 0}
@@ -44,12 +51,9 @@
         .card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;transition:all 0.3s;display:flex;flex-direction:column}
         .card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 30px rgba(0,230,118,0.1)}
         .card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-        
-        /* ICÔNE DE L'APPLICATION - ANDROID PAR DÉFAUT */
         .card-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,#3DDC84,#00c853);position:relative}
         .card-icon img{width:100%;height:100%;object-fit:cover}
         .card-icon .default-icon{font-size:28px}
-        
         .card-title{font-weight:bold;font-size:14px;color:#fff}.card-dev{color:var(--text2);font-size:10px}
         .card-desc{color:var(--text2);font-size:11px;margin:8px 0;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
         .card-meta{display:flex;justify-content:space-between;align-items:center;margin:8px 0;font-size:10px}.card-ver{color:var(--accent);font-weight:bold}.card-dl{color:var(--text2)}
@@ -98,7 +102,11 @@
 </header>
 
 <div class="container">
-    <div class="ad-box"><div class="ad-placeholder">📢 Publicité Start.io - 728x90 (ID: 204468294)</div></div>
+    <!-- PUBLICITÉ START.IO 728x90 -->
+    <div class="ad-container">
+        <div id="startio-banner-728-1" class="ad-banner-728"></div>
+    </div>
+    
     <div class="hero"><h1>🤖 OpenStore</h1><p style="color:var(--text2);font-size:13px;">Téléchargez les meilleures apps Android • Gratuit • Rapide</p></div>
 
     <div class="stats-grid">
@@ -113,7 +121,15 @@
         <div class="grid" id="appGrid"><div class="empty"><i class="fab fa-android"></i><h3>Chargement des applications...</h3></div></div>
     </div>
 
-    <div class="ad-box" style="max-width:340px;margin:12px auto;min-height:250px;"><div class="ad-placeholder" style="height:230px;">📢 300x250 - ID: 204468294</div></div>
+    <!-- PUBLICITÉ START.IO 728x90 -->
+    <div class="ad-container">
+        <div id="startio-banner-728-2" class="ad-banner-728"></div>
+    </div>
+
+    <!-- PUBLICITÉ START.IO 300x250 -->
+    <div class="ad-container" style="max-width:340px;margin:12px auto;min-height:250px;">
+        <div id="startio-banner-300" class="ad-banner-300"></div>
+    </div>
 </div>
 
 <footer class="footer"><p>© 2024 OpenStore • Firebase 🔥 • Pubs: 204468294</p></footer>
@@ -125,16 +141,12 @@
     <input type="text" id="version" placeholder="Version (ex: 1.0.0) *">
     <select id="category"><option value="outils">🛠️ Outils</option><option value="jeux">🎮 Jeux</option><option value="social">💬 Social</option><option value="productivite">📊 Productivité</option><option value="multimedia">🎬 Multimédia</option><option value="autre">📦 Autre</option></select>
     <textarea id="description" placeholder="Description de l'application *"></textarea>
-    <label style="color:var(--text2);font-size:11px;display:block;margin-bottom:4px;">Icône de l'application (optionnel)</label>
-    <div class="upload-area" id="iconUploadZone" style="margin-bottom:8px;" onclick="document.getElementById('iconFile').click()">
-        <i class="fas fa-image"></i><p>Cliquez pour l'icône (PNG)</p>
-    </div>
+    <label style="color:var(--text2);font-size:11px;">Icône (optionnel)</label>
+    <div class="upload-area" onclick="document.getElementById('iconFile').click()"><i class="fas fa-image"></i><p>Icône PNG</p></div>
     <input type="file" id="iconFile" accept="image/*" style="display:none;">
     <div class="file-info" id="iconFileInfo"></div>
-    <label style="color:var(--text2);font-size:11px;display:block;margin-bottom:4px;">Fichier APK *</label>
-    <div class="upload-area" id="uploadZone" onclick="document.getElementById('apkFile').click()">
-        <i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour l'APK (max 50 MB)</p>
-    </div>
+    <label style="color:var(--text2);font-size:11px;">Fichier APK *</label>
+    <div class="upload-area" id="uploadZone"><i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour l'APK</p></div>
     <input type="file" id="apkFile" accept=".apk" style="display:none;">
     <div class="file-info" id="fileInfo"></div>
     <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
@@ -153,11 +165,13 @@
 </div></div>
 
 <script>
+// ============ CONFIG ============
 const FIREBASE_URL = "https://openstore-22f32-default-rtdb.firebaseio.com/apps.json";
+const STARTIO_PUB_ID = "204468294";
 let apps = [], telechargements = {}, favoris = [], historique = [], userStats = { achievements: [] };
-let appsFiltrees = [], recherche = '', categorie = 'all';
-let iconDataUrl = '';
+let appsFiltrees = [], recherche = '', categorie = 'all', iconDataUrl = '';
 
+// ============ INIT STORAGE ============
 function initStorage() {
     try { telechargements = JSON.parse(localStorage.getItem('os_dl') || '{}'); } catch(e) { telechargements = {}; }
     try { favoris = JSON.parse(localStorage.getItem('os_fav') || '[]'); } catch(e) { favoris = []; }
@@ -166,19 +180,78 @@ function initStorage() {
 }
 initStorage();
 
+// ============ START.IO ============
+function initStartIO() {
+    try {
+        if (typeof Startio !== 'undefined') {
+            Startio.init({ pubId: STARTIO_PUB_ID });
+            
+            // Bannière 728x90 - Haut
+            Startio.showBanner({
+                containerId: 'startio-banner-728-1',
+                size: '728x90'
+            });
+            
+            // Bannière 728x90 - Milieu
+            Startio.showBanner({
+                containerId: 'startio-banner-728-2',
+                size: '728x90'
+            });
+            
+            // Bannière 300x250 - Bas
+            Startio.showBanner({
+                containerId: 'startio-banner-300',
+                size: '300x250'
+            });
+            
+            console.log('✅ Start.io initialisé - ID: ' + STARTIO_PUB_ID);
+        } else {
+            console.log('⚠️ SDK Start.io non chargé - placeholders affichés');
+            showPlaceholderAds();
+        }
+    } catch(e) {
+        console.log('⚠️ Start.io error: ' + e.message);
+        showPlaceholderAds();
+    }
+}
+
+function showPlaceholderAds() {
+    document.getElementById('startio-banner-728-1').innerHTML = '<div style="color:#6b7280;padding:20px;border:2px dashed #1f2937;border-radius:8px;">📢 Publicité 728x90</div>';
+    document.getElementById('startio-banner-728-2').innerHTML = '<div style="color:#6b7280;padding:20px;border:2px dashed #1f2937;border-radius:8px;">📢 Publicité 728x90</div>';
+    document.getElementById('startio-banner-300').innerHTML = '<div style="color:#6b7280;padding:20px;border:2px dashed #1f2937;border-radius:8px;height:210px;display:flex;align-items:center;justify-content:center;">📢 Publicité 300x250</div>';
+}
+
+// ============ FIREBASE ============
 async function loadApps() {
-    try { let r = await fetch(FIREBASE_URL); apps = (await r.json()) || []; if(apps.length===0) apps=JSON.parse(localStorage.getItem('os_apps')||'[]'); nettoyageAuto(); }
-    catch(e) { apps = JSON.parse(localStorage.getItem('os_apps') || '[]'); }
+    try {
+        let r = await fetch(FIREBASE_URL);
+        let data = await r.json();
+        apps = (data || []).filter(a => a && a.nom);
+        if (apps.length === 0) apps = JSON.parse(localStorage.getItem('os_apps') || '[]');
+        nettoyageAuto();
+        console.log('✅ ' + apps.length + ' apps chargées');
+    } catch(e) {
+        apps = JSON.parse(localStorage.getItem('os_apps') || '[]');
+        console.log('⚠️ Mode local');
+    }
     majStats(); appliquerFiltres(); verifierURLApp();
 }
+
 async function saveApps() {
     try { await fetch(FIREBASE_URL, { method: 'PUT', body: JSON.stringify(apps) }); } catch(e) {}
     localStorage.setItem('os_apps', JSON.stringify(apps));
 }
+
 function nettoyageAuto() {
-    let aP = {}; apps.forEach(a => { let k = (a.nom||'').toLowerCase().trim(); if(!aP[k]) aP[k] = []; aP[k].push(a); });
-    Object.keys(aP).forEach(k => { let g = aP[k].sort((a,b) => new Date(b.date||0) - new Date(a.date||0)); g.slice(1).forEach(o => { let i = apps.findIndex(a => a.id===o.id); if(i>-1) apps.splice(i,1); }); });
+    let aP = {};
+    apps.forEach(a => { let k = (a.nom||'').toLowerCase().trim(); if(!aP[k]) aP[k]=[]; aP[k].push(a); });
+    Object.keys(aP).forEach(k => {
+        let g = aP[k].sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+        g.slice(1).forEach(o => { let i = apps.findIndex(a => a.id===o.id); if(i>-1) apps.splice(i,1); });
+    });
 }
+
+// ============ STATS ============
 function majStats() {
     let devs = {}; apps.forEach(a => { if(a.dev&&!devs[a.dev]) devs[a.dev]=0; if(a.dev) devs[a.dev]++; });
     let td = 0; for(let k in telechargements) td += (telechargements[k]||0);
@@ -192,10 +265,12 @@ function majStats() {
     document.getElementById('dashAch').textContent = (userStats.achievements||[]).length;
 }
 
+// ============ MENU ============
 function toggleMenu() { document.getElementById('menuDropdown').classList.toggle('show'); }
 function fermerMenu() { document.getElementById('menuDropdown').classList.remove('show'); }
-document.addEventListener('click', function(e) { if(!e.target.closest('.menu-container')) fermerMenu(); });
+document.addEventListener('click', e => { if(!e.target.closest('.menu-container')) fermerMenu(); });
 
+// ============ MODALS ============
 function ouvrirModal() { document.getElementById('maModal').classList.add('show'); fermerMenu(); }
 function fermerModal() {
     document.getElementById('maModal').classList.remove('show');
@@ -206,7 +281,8 @@ function fermerModal() {
 }
 function ouvrirFavoris() {
     let g = document.getElementById('favorisGrid');
-    g.innerHTML = apps.filter(a => favoris.includes(a.id)).length === 0 ? '<p style="color:var(--text2);">Aucun favori</p>' : '<div class="grid">' + apps.filter(a => favoris.includes(a.id)).map(a => createCard(a)).join('') + '</div>';
+    let fav = apps.filter(a => favoris.includes(a.id));
+    g.innerHTML = fav.length === 0 ? '<p style="color:var(--text2);">Aucun favori</p>' : '<div class="grid">' + fav.map(a => createCard(a)).join('') + '</div>';
     document.getElementById('favorisModal').classList.add('show'); fermerMenu();
 }
 function fermerFavoris() { document.getElementById('favorisModal').classList.remove('show'); }
@@ -219,18 +295,21 @@ function fermerHistorique() { document.getElementById('historiqueModal').classLi
 function ouvrirDashboard() { majStats(); document.getElementById('dashboardModal').classList.add('show'); fermerMenu(); }
 function fermerDashboard() { document.getElementById('dashboardModal').classList.remove('show'); }
 
+// ============ CARTE ============
 function createCard(a) {
     if(!a) return '';
-    let dl = telechargements[a.id] || 0, isFav = favoris.includes(a.id), isNew = (Date.now() - new Date(a.date||Date.now()).getTime()) < 86400000;
-    let url = a.url || '';
+    let dl = telechargements[a.id]||0, isFav = favoris.includes(a.id), isNew = (Date.now()-new Date(a.date||Date.now()).getTime())<86400000;
+    let url = a.url||'';
     
-    // ICÔNE : utiliser l'icône personnalisée ou l'icône Android par défaut
-    let iconHtml = '';
-    if (a.icon && a.icon !== '') {
-        iconHtml = '<div class="card-icon"><img src="' + a.icon + '" alt="Icône de ' + (a.nom||'l\'app') + '" onerror="this.parentElement.innerHTML=\'<i class=\\\'fab fa-android default-icon\\\'></i>\';"></div>';
-    } else {
-        iconHtml = '<div class="card-icon"><i class="fab fa-android default-icon"></i></div>';
-    }
+    let iconHtml = (a.icon && a.icon!=='') ?
+        '<div class="card-icon"><img src="'+a.icon+'" alt="Icon" onerror="this.parentElement.innerHTML=\'<i class=\\\'fab fa-android default-icon\\\'></i>\';"></div>' :
+        '<div class="card-icon"><i class="fab fa-android default-icon"></i></div>';
+    
+    // Si l'URL est un lien réel (commence par http)
+    let isRealUrl = url && (url.startsWith('http://') || url.startsWith('https://'));
+    let downloadHtml = isRealUrl ?
+        '<a class="btn-download-big" href="'+url+'" target="_blank" rel="noopener noreferrer" onclick="compterTelechargement('+a.id+',\''+(a.nom||'')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER</a>' :
+        '<button class="btn-download-big" onclick="event.preventDefault();compterTelechargement('+a.id+',\''+(a.nom||'')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER (SIMULATION)</button>';
     
     return '<div class="card" id="card-'+(a.id||0)+'">'+
         '<div class="card-header">'+iconHtml+
@@ -238,7 +317,7 @@ function createCard(a) {
             '<div class="card-dev">Par '+(a.dev||'Inconnu')+'</div></div></div>'+
         '<p class="card-desc">'+(a.desc||'Aucune description')+'</p>'+
         '<div class="card-meta"><span class="card-ver">📦 v'+(a.ver||'1.0')+'</span><span class="card-dl">📥 '+dl+' téléch.</span></div>'+
-        '<a class="btn-download-big" href="'+(url&&url!=='#'&&!url.startsWith('#fichier')?url:'#')+'" '+(url&&url!=='#'&&!url.startsWith('#fichier')?'target="_blank" rel="noopener noreferrer"':'')+' onclick="return telechargerApp(\''+url+'\',\''+(a.nom||'')+'\','+(a.id||0)+')"><i class="fas fa-download"></i> TÉLÉCHARGER</a>'+
+        downloadHtml+
         '<div class="card-actions-row">'+
             '<button class="btn-icon-action btn-wa" onclick="event.preventDefault();partagerApp('+(a.id||0)+',\'whatsapp\')"><i class="fab fa-whatsapp"></i></button>'+
             '<button class="btn-icon-action btn-tw" onclick="event.preventDefault();partagerApp('+(a.id||0)+',\'twitter\')"><i class="fab fa-twitter"></i></button>'+
@@ -249,20 +328,16 @@ function createCard(a) {
     '</div>';
 }
 
-function telechargerApp(url, nom, id) {
-    event.preventDefault(); event.stopPropagation();
-    if(!url||url==='#'||url.startsWith('#fichier')||url==='#demo') {
-        toast('📥 Simulation : '+(nom||'App')+' (APK réel à uploader)', 'success');
-        if(id) { telechargements[id] = (telechargements[id]||0)+1; localStorage.setItem('os_dl', JSON.stringify(telechargements)); }
-        historique.unshift({nom:nom||'App', date:new Date().toISOString()}); localStorage.setItem('os_hist', JSON.stringify(historique));
-        majStats(); appliquerFiltres(); verifierAchievements(); return false;
+// ============ TÉLÉCHARGEMENT CORRIGÉ ============
+function compterTelechargement(id, nom) {
+    if(id) {
+        telechargements[id] = (telechargements[id]||0) + 1;
+        localStorage.setItem('os_dl', JSON.stringify(telechargements));
     }
-    if(id) { telechargements[id] = (telechargements[id]||0)+1; localStorage.setItem('os_dl', JSON.stringify(telechargements)); }
-    historique.unshift({nom:nom||'App', date:new Date().toISOString()}); localStorage.setItem('os_hist', JSON.stringify(historique));
-    toast('📥 '+(nom||'App')+' - Téléchargement démarré !', 'success');
-    setTimeout(function(){ window.open(url, '_blank', 'noopener,noreferrer'); }, 300);
-    setTimeout(function(){ majStats(); appliquerFiltres(); verifierAchievements(); }, 1500);
-    return false;
+    historique.unshift({nom:nom||'App', date:new Date().toISOString()});
+    localStorage.setItem('os_hist', JSON.stringify(historique));
+    toast('📥 '+(nom||'App')+' téléchargé !', 'success');
+    setTimeout(function(){ majStats(); appliquerFiltres(); verifierAchievements(); }, 1000);
 }
 
 function toggleFavori(id) {
@@ -281,32 +356,34 @@ function partagerApp(id, reseau) {
 }
 function copierLienApp(id) {
     let url = 'https://palukugloire401-cmd.github.io/Boutique/?app='+id;
-    if(navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ toast('📋 Lien copié !', 'success'); }).catch(function(){ prompt('Copiez :', url); });
-    else prompt('Copiez :', url);
+    if(navigator.clipboard) navigator.clipboard.writeText(url).then(()=>toast('📋 Lien copié !','success')).catch(()=>prompt('Copiez :',url));
+    else prompt('Copiez :',url);
 }
 
 function verifierAchievements() {
     let td = 0; for(let k in telechargements) td += (telechargements[k]||0);
-    if(td>=1&&!userStats.achievements.includes('first')){ userStats.achievements.push('first'); toast('🥇 Premier téléchargement !', 'success'); }
-    if(td>=10&&!userStats.achievements.includes('10dl')){ userStats.achievements.push('10dl'); toast('📥 10 téléchargements !', 'success'); }
+    if(td>=1&&!userStats.achievements.includes('first')){ userStats.achievements.push('first'); toast('🥇 Premier téléchargement !','success'); }
+    if(td>=10&&!userStats.achievements.includes('10dl')){ userStats.achievements.push('10dl'); toast('📥 10 téléchargements !','success'); }
     localStorage.setItem('os_userStats', JSON.stringify(userStats));
 }
 
+// ============ FILTRES ============
 function filtrerApps() { recherche = (document.getElementById('searchInput')?.value||'').trim().toLowerCase(); appliquerFiltres(); }
-function filtrerCategorie(cat, el) { document.querySelectorAll('.filter').forEach(f => f.classList.remove('active')); if(el) el.classList.add('active'); categorie=cat; appliquerFiltres(); }
+function filtrerCategorie(cat, el) { document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active')); if(el) el.classList.add('active'); categorie=cat; appliquerFiltres(); }
 function appliquerFiltres() {
     appsFiltrees = apps.slice();
-    if(categorie!=='all') appsFiltrees = appsFiltrees.filter(a => a.cat===categorie);
-    if(recherche) appsFiltrees = appsFiltrees.filter(a => (a.nom||'').toLowerCase().includes(recherche)||(a.dev||'').toLowerCase().includes(recherche));
-    appsFiltrees.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+    if(categorie!=='all') appsFiltrees = appsFiltrees.filter(a=>a.cat===categorie);
+    if(recherche) appsFiltrees = appsFiltrees.filter(a=>(a.nom||'').toLowerCase().includes(recherche)||(a.dev||'').toLowerCase().includes(recherche));
+    appsFiltrees.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
     afficherApps();
 }
 function afficherApps() {
     let g = document.getElementById('appGrid'); if(!g) return;
     let pa = appsFiltrees.slice(0,12);
-    g.innerHTML = pa.length===0 ? '<div class="empty"><i class="fab fa-android"></i><h3>Aucune application trouvée</h3><p>Les développeurs n\'ont pas encore publié.</p></div>' : pa.map(a => createCard(a)).join('');
+    g.innerHTML = pa.length===0 ? '<div class="empty"><i class="fab fa-android"></i><h3>Aucune application</h3><p>Soyez le premier à publier !</p></div>' : pa.map(a=>createCard(a)).join('');
 }
 
+// ============ PUBLICATION ============
 function publierApp() {
     try {
         let n = document.getElementById('appName')?.value?.trim();
@@ -315,37 +392,37 @@ function publierApp() {
         let c = document.getElementById('category')?.value;
         let desc = document.getElementById('description')?.value?.trim();
         let f = document.getElementById('apkFile')?.files?.[0];
-        if(!n||!d||!v||!desc){ toast('Remplissez tous les champs obligatoires', 'error'); return; }
+        if(!n||!d||!v||!desc){ toast('Remplissez tous les champs','error'); return; }
         
         let btn = event?.target; if(btn){ btn.disabled=true; btn.textContent='⏳...'; }
         let pb = document.getElementById('progressBar'); if(pb) pb.classList.add('active');
         let pf = document.getElementById('progressFill');
-        let p=0, iv=setInterval(function(){ p+=Math.random()*20; if(p>90) p=90; if(pf) pf.style.width=p+'%'; },300);
+        let p=0, iv=setInterval(()=>{ p+=Math.random()*20; if(p>90) p=90; if(pf) pf.style.width=p+'%'; },300);
         
-        let existants = apps.filter(a => (a.nom||'').toLowerCase().trim()===n.toLowerCase().trim()&&(a.dev||'').toLowerCase().trim()===d.toLowerCase().trim());
-        existants.forEach(o => { let i = apps.findIndex(a => a.id===o.id); if(i>-1) apps.splice(i,1); });
+        let existants = apps.filter(a=>(a.nom||'').toLowerCase().trim()===n.toLowerCase().trim()&&(a.dev||'').toLowerCase().trim()===d.toLowerCase().trim());
+        existants.forEach(o=>{ let i=apps.findIndex(a=>a.id===o.id); if(i>-1) apps.splice(i,1); });
         
         apps.unshift({ id:Date.now(), nom:n, dev:d, ver:v, cat:c, desc:desc, icon:iconDataUrl, url:f?'#fichier:'+f.name:'#demo', vip:0, date:new Date().toISOString() });
         saveApps();
         
-        setTimeout(function(){
+        setTimeout(()=>{
             clearInterval(iv); if(pf) pf.style.width='100%';
-            toast('✅ '+n+' v'+v+' publiée !'+(existants.length>0?' (ancienne version remplacée)':''), 'success');
+            toast('✅ '+n+' v'+v+' publiée !'+(existants.length>0?' (ancienne version remplacée)':''),'success');
             fermerModal(); if(btn){ btn.disabled=false; btn.textContent='Publier'; }
-            if(pb) pb.classList.remove('active'); if(pf) setTimeout(function(){ pf.style.width='0%'; },500);
+            if(pb) pb.classList.remove('active'); if(pf) setTimeout(()=>pf.style.width='0%',500);
             majStats(); appliquerFiltres();
         },1500);
-    } catch(e) { toast('Erreur: '+(e.message||'Inconnue'), 'error'); }
+    } catch(e) { toast('Erreur: '+(e.message||'Inconnue'),'error'); }
 }
 
 function verifierURLApp() {
     try {
         let params = new URLSearchParams(window.location.search), appId = params.get('app');
         if(appId) {
-            let app = apps.find(a => a.id==appId);
+            let app = apps.find(a=>a.id==appId);
             if(app) {
                 document.title = (app.nom||'App')+' - OpenStore';
-                setTimeout(function(){
+                setTimeout(()=>{
                     let carte = document.getElementById('card-'+appId);
                     if(carte){ carte.scrollIntoView({behavior:'smooth'}); carte.style.border='2px solid var(--accent)'; carte.style.boxShadow='0 0 40px rgba(0,230,118,0.3)'; }
                 },1000);
@@ -356,54 +433,64 @@ function verifierURLApp() {
 
 function toast(m, t) {
     try {
-        let d = document.createElement('div'); d.className = 'toast'+(t==='error'?' error':'');
-        d.textContent = (t==='error'?'❌ ':'✅ ')+m;
+        let d = document.createElement('div'); d.className='toast'+(t==='error'?' error':'');
+        d.textContent=(t==='error'?'❌ ':'✅ ')+m;
         document.getElementById('toastContainer').appendChild(d);
-        setTimeout(function(){ try{d.remove();}catch(e){} },3500);
+        setTimeout(()=>{ try{d.remove();}catch(e){} },3500);
     } catch(e) {}
 }
 function genererRapport() {
     let td=0; for(let k in telechargements) td+=(telechargements[k]||0);
-    alert('📊 RAPPORT\n━━━━━━\n📥 Téléch: '+td+'\n❤️ Favoris: '+favoris.length+'\n📋 Historique: '+historique.length+'\n🏆 Succès: '+(userStats.achievements||[]).length+'\n━━━━━━\n📅 '+new Date().toLocaleDateString());
+    alert('📊 RAPPORT\n━━━━━━\n📥 Téléch: '+td+'\n❤️ Favoris: '+favoris.length+'\n📋 Historique: '+historique.length+'\n🏆 Succès: '+(userStats.achievements||[]).length+'\n📅 '+new Date().toLocaleDateString());
     fermerMenu();
 }
 function partagerSite() {
     let url='https://palukugloire401-cmd.github.io/Boutique/', texte='📱 OpenStore - Store Android gratuit ! '+url;
-    if(navigator.share) navigator.share({title:'OpenStore', text:texte, url:url}).catch(function(){});
-    else window.open('https://wa.me/?text='+encodeURIComponent(texte), '_blank');
+    if(navigator.share) navigator.share({title:'OpenStore',text:texte,url:url}).catch(()=>{});
+    else window.open('https://wa.me/?text='+encodeURIComponent(texte),'_blank');
     fermerMenu();
 }
 
+// ============ INIT ============
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 OpenStore');
+    console.log('🚀 OpenStore - Démarrage');
+    
+    // Init Start.io
+    initStartIO();
+    
+    // Load apps
     loadApps();
     
     // Upload APK
-    document.getElementById('uploadZone').addEventListener('click', function(e){ e.stopPropagation(); document.getElementById('apkFile').click(); });
-    document.getElementById('apkFile').addEventListener('change', function(){
+    let uz = document.getElementById('uploadZone');
+    if(uz) uz.addEventListener('click', function(e){ e.stopPropagation(); document.getElementById('apkFile').click(); });
+    
+    let af = document.getElementById('apkFile');
+    if(af) af.addEventListener('change', function(){
         let f = this.files?.[0];
         if(f){ document.getElementById('fileInfo').textContent='✅ '+f.name+' ('+(f.size/1024/1024).toFixed(1)+' MB)'; document.getElementById('fileInfo').classList.add('show'); }
     });
     
     // Upload icône
-    document.getElementById('iconFile').addEventListener('change', function(){
+    let ic = document.getElementById('iconFile');
+    if(ic) ic.addEventListener('change', function(){
         let f = this.files?.[0];
         if(f){
             let reader = new FileReader();
-            reader.onload = function(e) {
-                iconDataUrl = e.target.result;
-                document.getElementById('iconFileInfo').textContent = '✅ Icône chargée';
-                document.getElementById('iconFileInfo').classList.add('show');
-            };
+            reader.onload = function(e) { iconDataUrl = e.target.result; document.getElementById('iconFileInfo').textContent='✅ Icône chargée'; document.getElementById('iconFileInfo').classList.add('show'); };
             reader.readAsDataURL(f);
         }
     });
     
-    ['maModal','favorisModal','historiqueModal','dashboardModal'].forEach(function(id){
+    // Fermer modals
+    ['maModal','favorisModal','historiqueModal','dashboardModal'].forEach(id => {
         let m = document.getElementById(id);
         if(m) m.addEventListener('click', function(e){ if(e.target===this) this.classList.remove('show'); });
     });
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') document.querySelectorAll('.modal.show').forEach(function(m){ m.classList.remove('show'); }); });
+    
+    document.addEventListener('keydown', e => { if(e.key==='Escape') document.querySelectorAll('.modal.show').forEach(m=>m.classList.remove('show')); });
+    
+    console.log('✅ Prêt !');
 });
 </script>
 </body>
