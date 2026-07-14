@@ -3,125 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenStore</title>
+    <meta name="description" content="OpenStore - Publiez et téléchargez des applications Android gratuitement. Upload automatique.">
+    <meta property="og:title" content="OpenStore - Apps Android">
+    <title>OpenStore - Apps Android | Upload Auto</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root{--bg:#070a13;--surface:#111827;--accent:#00e676;--accent2:#00ff84;--text:#e0e0e0;--text2:#9ca3af;--text3:#6b7280;--border:#1f2937;--danger:#ef4444;--dev:#3b82f6;--radius:16px}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial,sans-serif;background:#070a13;color:#e0e0e0;min-height:100vh}
-        .header{background:#111827;padding:15px;display:flex;justify-content:space-between;align-items:center}
-        .logo{color:#fff;font-size:20px;font-weight:bold}.logo i{color:#00e676}
-        button{background:#00e676;color:#000;border:none;padding:10px 20px;border-radius:50px;font-weight:bold;cursor:pointer;font-size:14px}button:hover{background:#00ff84}
-        .container{max-width:1000px;margin:0 auto;padding:15px}
-        .grid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}@media(min-width:900px){.grid{grid-template-columns:1fr 1fr 1fr}}
-        .card{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:18px}
-        .card h3{color:#fff;margin-bottom:5px}
-        .card p{color:#9ca3af;font-size:13px;margin:8px 0}
-        .btn-download{display:block;width:100%;padding:14px;background:#00e676;color:#000;border:none;border-radius:12px;font-size:15px;font-weight:bold;cursor:pointer;text-align:center;text-decoration:none;margin:10px 0}
-        .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}
-        .modal-box{background:#111827;padding:20px;border-radius:16px;width:100%;max-width:450px;border:1px solid #1f2937}
-        .modal-box h2{color:#fff;margin-bottom:15px}
-        .modal-box input,.modal-box textarea{width:100%;padding:10px;margin-bottom:10px;background:#070a13;border:1px solid #1f2937;border-radius:10px;color:#fff;font-size:13px}
-        .upload-area{border:2px dashed #1f2937;padding:20px;text-align:center;border-radius:10px;margin-bottom:10px;cursor:pointer;background:#070a13}.upload-area:hover{border-color:#00e676}
-        .toast{position:fixed;top:15px;right:15px;background:#111827;border-left:3px solid #00e676;padding:12px;border-radius:10px;z-index:9999;font-size:13px;animation:slide 0.3s ease}@keyframes slide{from{transform:translateX(100%)}to{transform:translateX(0)}}
+        body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+        .header{background:rgba(17,24,39,0.95);backdrop-filter:blur(20px);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:10px}
+        .logo{display:flex;align-items:center;gap:10px;color:#fff;font-size:20px;font-weight:800;text-decoration:none}
+        .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),#00c853);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;box-shadow:0 0 20px rgba(0,230,118,0.4);animation:glow 3s infinite}
+        @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(0,230,118,0.4)}50%{box-shadow:0 0 40px rgba(0,230,118,0.8)}}
+        button,.btn{padding:9px 18px;border-radius:50px;font-weight:700;cursor:pointer;font-size:13px;border:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:6px;text-decoration:none;outline:none}
+        .btn-accent{background:var(--accent);color:#000}.btn-accent:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 5px 20px rgba(0,230,118,0.3)}
+        .btn-sm{padding:6px 14px;font-size:11px}
+        .container{max-width:1100px;margin:0 auto;padding:15px}
+        .section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:15px 0}
+        h2{color:#fff;font-size:18px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+        p{color:var(--text2);font-size:13px;margin-bottom:8px}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(85px,1fr));gap:8px;margin:10px 0}
+        .stat-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+        .stat-card .val{font-size:20px;font-weight:900}.stat-card .val.g{color:var(--accent)}.stat-card .val.b{color:var(--dev)}
+        .stat-card .lbl{font-size:9px;color:var(--text3);text-transform:uppercase;margin-top:4px}
+        .ad-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin:12px 0;text-align:center;min-height:90px;display:flex;align-items:center;justify-content:center;position:relative}
+        .ad-box::before{content:'Publicité';position:absolute;top:5px;right:10px;font-size:8px;color:var(--text3);background:rgba(0,0,0,0.5);padding:2px 8px;border-radius:8px;z-index:1}
+        .ad-placeholder{color:var(--text3);border:2px dashed var(--border);border-radius:10px;padding:18px;width:100%;font-size:13px}
+        .grid{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}@media(min-width:900px){.grid{grid-template-columns:1fr 1fr 1fr}}
+        .card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:18px;transition:all 0.3s;display:flex;flex-direction:column;position:relative;overflow:hidden}
+        .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform 0.3s}
+        .card:hover::before{transform:scaleX(1)}.card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 12px 30px rgba(0,230,118,0.08)}
+        .card-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+        .card-icon{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#3DDC84,#00c853);display:flex;align-items:center;justify-content:center;font-size:22px;color:#000;flex-shrink:0;box-shadow:0 4px 12px rgba(0,230,118,0.25);overflow:hidden}
+        .card-icon img{width:100%;height:100%;object-fit:cover}
+        .card-title{font-weight:700;font-size:14px;color:#fff}.card-dev{color:var(--text3);font-size:10px}
+        .card-desc{color:var(--text2);font-size:12px;margin:8px 0;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+        .card-meta{display:flex;justify-content:space-between;margin:8px 0;font-size:10px}.card-ver{color:var(--accent);font-weight:700}.card-dl{color:var(--text3)}
+        .btn-download{display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:100%!important;padding:14px!important;background:var(--accent)!important;color:#000!important;border:none!important;border-radius:12px!important;font-size:14px!important;font-weight:700!important;cursor:pointer!important;text-decoration:none!important;margin:8px 0!important;transition:all 0.3s!important}.btn-download:hover{background:var(--accent2)!important;transform:translateY(-2px)!important}
+        .card-actions{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
+        .btn-action{flex:1;min-width:38px;display:flex;align-items:center;justify-content:center;gap:3px;padding:7px 4px;border-radius:10px;font-size:9px;font-weight:700;cursor:pointer;border:none;color:#fff;transition:all 0.2s}.btn-action:hover{opacity:0.9}.btn-wa{background:#25D366}.btn-tw{background:#1DA1F2}.btn-fb{background:#1877F2}.btn-link{background:var(--text3)}
+        .empty{text-align:center;padding:50px 20px;color:var(--text3);border:2px dashed var(--border);border-radius:16px;grid-column:1/-1}.empty i{font-size:50px;color:var(--accent);margin-bottom:15px;opacity:0.4}
+        .search-box{position:relative;margin-bottom:12px}.search-box input{width:100%;padding:11px 14px 11px 38px;background:var(--bg);border:1px solid var(--border);border-radius:50px;color:#fff;font-size:13px;transition:all 0.3s}.search-box input:focus{outline:none;border-color:var(--accent)}.search-box i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}
+        .filters{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+        .filter{background:var(--bg);border:1px solid var(--border);color:var(--text2);padding:6px 13px;border-radius:50px;cursor:pointer;font-size:10px;font-weight:600;transition:all 0.3s}.filter.active,.filter:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+        .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);z-index:999;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}
+        .modal-box{background:var(--surface);padding:22px;border-radius:var(--radius);width:100%;max-width:500px;border:1px solid var(--border);max-height:88vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.5);animation:modalIn 0.3s ease}@keyframes modalIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+        .modal-box h2{color:#fff;margin-bottom:15px;font-size:18px}
+        .modal-box input,.modal-box textarea,.modal-box select{width:100%;padding:10px;margin-bottom:10px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:#fff;font-size:13px}.modal-box textarea{min-height:70px;resize:vertical}
+        .upload-area{border:2px dashed var(--border);padding:20px;text-align:center;border-radius:12px;margin-bottom:10px;cursor:pointer;background:var(--bg);transition:all 0.3s}.upload-area:hover{border-color:var(--accent)}.upload-area i{font-size:28px;color:var(--accent);margin-bottom:5px}
+        .file-info{display:none;background:rgba(0,230,118,0.1);padding:8px 12px;border-radius:8px;margin-bottom:10px;color:var(--accent);font-size:12px}.file-info.show{display:block}
+        .progress-bar{display:none;height:5px;background:var(--border);border-radius:5px;margin:8px 0;overflow:hidden}.progress-bar.active{display:block}.progress-fill{height:100%;background:var(--accent);width:0%;transition:width 0.3s}
+        .modal-buttons{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+        .btn-cancel{background:transparent;border:1px solid var(--border);color:var(--text2);padding:9px 18px;border-radius:50px;cursor:pointer;font-weight:700;font-size:13px}.btn-cancel:hover{border-color:var(--danger);color:var(--danger)}
+        .toast{position:fixed;top:20px;right:20px;background:var(--surface);border-left:4px solid var(--accent);padding:12px 18px;border-radius:12px;z-index:9999;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.4);animation:toastIn 0.35s ease}@keyframes toastIn{from{transform:translateX(120%)}to{transform:translateX(0)}}
+        .footer{text-align:center;padding:20px;color:var(--text3);border-top:1px solid var(--border);margin-top:30px;font-size:12px}
+        .badge-new{background:var(--danger);color:#fff;font-size:8px;padding:2px 8px;border-radius:10px;font-weight:700;animation:pulse 1.5s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+        @media(max-width:600px){.hero h1{font-size:22px}.card{padding:14px}}
     </style>
 </head>
 <body>
-<div id="toastContainer" style="position:fixed;top:15px;right:15px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
+<div id="toastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
 
 <header class="header">
-    <a href="/" class="logo"><i class="fab fa-android"></i> OpenStore</a>
-    <button onclick="ouvrirModal()"><i class="fas fa-upload"></i> Publier</button>
+    <a href="/" class="logo"><div class="logo-icon">📱</div>OpenStore</a>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <div style="text-align:center;"><div style="font-weight:900;color:var(--accent);font-size:14px;" id="hdrApps">0</div><div style="font-size:8px;color:var(--text3);">APPS</div></div>
+        <button class="btn btn-accent" onclick="ouvrirModal()"><i class="fas fa-cloud-upload-alt"></i> Publier une app</button>
+        <button class="btn btn-sm" style="background:transparent;border:1px solid var(--border);color:var(--text2);" onclick="ouvrirFavoris()"><i class="fas fa-heart"></i> Favoris</button>
+        <button class="btn btn-sm" style="background:transparent;border:1px solid var(--border);color:var(--text2);" onclick="ouvrirHistorique()"><i class="fas fa-history"></i> Historique</button>
+    </div>
 </header>
 
 <div class="container">
-    <div style="background:#111827;border:1px solid #1f2937;border-radius:12px;padding:15px;text-align:center;color:#6b7280;margin-bottom:15px;">📢 Publicité Start.io - ID: 204468294</div>
-    
-    <h1 style="text-align:center;color:#fff;margin:15px 0;">📱 Catalogue</h1>
-    <div class="grid" id="appGrid"><p style="color:#9ca3af;text-align:center;">Chargement...</p></div>
-    
-    <p style="text-align:center;color:#6b7280;margin-top:15px;">📢 Publicité 300x250 - ID: 204468294</p>
+    <div class="ad-box"><div class="ad-placeholder">📢 Publicité Start.io - 728x90 (ID: 204468294)</div></div>
+
+    <div class="section" style="text-align:center;background:linear-gradient(135deg,#0d1525,#111827);">
+        <h1 style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:28px;font-weight:900;">📱 Publiez & Téléchargez des Apps</h1>
+        <p>Upload automatique gratuit • Téléchargement direct • Pour tous les appareils</p>
+        <button class="btn btn-accent" onclick="ouvrirModal()"><i class="fas fa-rocket"></i> Publier une application</button>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div style="font-size:20px;">📱</div><div class="val g" id="statApps">0</div><div class="lbl">Applications</div></div>
+        <div class="stat-card"><div style="font-size:20px;">👨‍💻</div><div class="val b" id="statDevs">0</div><div class="lbl">Développeurs</div></div>
+        <div class="stat-card"><div style="font-size:20px;">📥</div><div class="val g" id="statDL">0</div><div class="lbl">Téléchargés</div></div>
+    </div>
+
+    <div class="section" id="catalogue">
+        <h2><i class="fas fa-store"></i> Catalogue d'Applications</h2>
+        <div class="search-box"><i class="fas fa-search"></i><input type="search" id="searchInput" placeholder="Rechercher..." oninput="filtrer()"></div>
+        <div class="filters">
+            <span class="filter active" onclick="filtrerCat('all',this)">📱 Toutes</span>
+            <span class="filter" onclick="filtrerCat('outils',this)">🛠️ Outils</span>
+            <span class="filter" onclick="filtrerCat('jeux',this)">🎮 Jeux</span>
+            <span class="filter" onclick="filtrerCat('social',this)">💬 Social</span>
+            <span class="filter" onclick="filtrerCat('productivite',this)">📊 Pro</span>
+            <span class="filter" onclick="filtrerCat('multimedia',this)">🎬 Média</span>
+        </div>
+        <div class="grid" id="appGrid"><div class="empty"><i class="fab fa-android"></i><h3>Chargement...</h3></div></div>
+    </div>
+
+    <div class="ad-box" style="max-width:340px;margin:15px auto;min-height:250px;"><div class="ad-placeholder" style="height:230px;display:flex;align-items:center;justify-content:center;flex-direction:column;">📢 Publicité 300x250<br><small>ID: 204468294</small></div></div>
 </div>
 
-<footer style="text-align:center;padding:15px;color:#6b7280;border-top:1px solid #1f2937;margin-top:20px;font-size:12px;"><p>© 2024 OpenStore</p></footer>
+<footer class="footer"><p>© 2024 OpenStore • Upload automatique • Pubs: 204468294</p></footer>
 
-<div class="modal" id="maModal"><div class="modal-box"><h2>📤 Publier</h2>
-    <input type="text" id="appName" placeholder="Nom *">
-    <input type="text" id="developer" placeholder="Développeur *">
-    <input type="text" id="version" placeholder="Version *">
-    <textarea id="description" placeholder="Description *" style="min-height:60px;resize:vertical;"></textarea>
-    <input type="text" id="appUrl" placeholder="Lien de téléchargement (URL directe APK) *">
-    <p style="color:#9ca3af;font-size:11px;margin-bottom:10px;">Ex: https://github.com/.../monapp.apk</p>
-    <div style="display:flex;gap:8px;justify-content:flex-end;">
-        <button style="background:transparent;border:1px solid #1f2937;color:#9ca3af;" onclick="fermerModal()">Annuler</button>
-        <button onclick="publier()">📤 Publier</button>
-    </div>
+<!-- MODAL PUBLICATION -->
+<div class="modal" id="maModal"><div class="modal-box"><h2>📤 Publier une application</h2>
+    <input type="text" id="appName" placeholder="Nom de l'application *">
+    <input type="text" id="developer" placeholder="Votre nom de développeur *">
+    <input type="text" id="version" placeholder="Version (ex: 1.0.0) *">
+    <select id="category"><option value="outils">🛠️ Outils</option><option value="jeux">🎮 Jeux</option><option value="social">💬 Social</option><option value="productivite">📊 Productivité</option><option value="multimedia">🎬 Multimédia</option><option value="autre">📦 Autre</option></select>
+    <textarea id="description" placeholder="Description *"></textarea>
+    <label style="color:var(--text2);font-size:12px;">Icône (optionnel)</label>
+    <div class="upload-area" style="margin-bottom:10px;" onclick="document.getElementById('iconFile').click()"><i class="fas fa-image"></i><p>Cliquez pour l'icône</p></div>
+    <input type="file" id="iconFile" accept="image/*" style="display:none;">
+    <div class="file-info" id="iconFileInfo"></div>
+    <label style="color:var(--text2);font-size:12px;">Fichier APK *</label>
+    <div class="upload-area" id="uploadZone" onclick="document.getElementById('apkFile').click()"><i class="fas fa-cloud-upload-alt"></i><p>Cliquez pour l'APK</p><p style="font-size:10px;color:var(--text3);">Upload automatique gratuit</p></div>
+    <input type="file" id="apkFile" accept=".apk" style="display:none;">
+    <div class="file-info" id="fileInfo"></div>
+    <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="modal-buttons"><button class="btn-cancel" onclick="fermerModal()">Annuler</button><button class="btn btn-accent" onclick="publier()" id="btnPublier"><i class="fas fa-paper-plane"></i> Publier</button></div>
 </div></div>
+
+<!-- MODAL FAVORIS -->
+<div class="modal" id="favModal"><div class="modal-box"><h2>❤️ Favoris</h2><div class="grid" id="favGrid"></div><button class="btn btn-accent btn-sm" onclick="document.getElementById('favModal').classList.remove('show')" style="margin-top:10px;">Fermer</button></div></div>
+
+<!-- MODAL HISTORIQUE -->
+<div class="modal" id="histModal"><div class="modal-box"><h2>🕐 Historique</h2><div id="histContent"></div><button class="btn btn-accent btn-sm" onclick="document.getElementById('histModal').classList.remove('show')" style="margin-top:10px;">Fermer</button></div></div>
 
 <script>
 const DB_URL = "https://openstore-22f32-default-rtdb.firebaseio.com/apps.json";
-let apps = [];
-let telechargements = JSON.parse(localStorage.getItem('dl') || '{}');
+let apps = [], telechargements = JSON.parse(localStorage.getItem('dl') || '{}');
+let favoris = JSON.parse(localStorage.getItem('fav') || '[]'), historique = JSON.parse(localStorage.getItem('hist') || '[]');
+let iconDataUrl = '', recherche = '', categorie = 'all', appsFiltrees = [];
 
 async function loadApps() {
-    try { let r=await fetch(DB_URL); apps=(await r.json())||[]; if(apps.length===0) apps=JSON.parse(localStorage.getItem('apps')||'[]'); }
-    catch(e) { apps=JSON.parse(localStorage.getItem('apps')||'[]'); }
+    try { let r = await fetch(DB_URL); apps = (await r.json()) || []; if (apps.length === 0) apps = JSON.parse(localStorage.getItem('apps') || '[]'); }
+    catch (e) { apps = JSON.parse(localStorage.getItem('apps') || '[]'); }
+    majStats(); appliquerFiltres();
+}
+function majStats() {
+    let devs = {}, td = 0;
+    apps.forEach(a => { if (a.dev && !devs[a.dev]) devs[a.dev] = 0; if (a.dev) devs[a.dev]++; td += (telechargements[a.id] || 0); });
+    document.getElementById('hdrApps').textContent = apps.length;
+    document.getElementById('statApps').textContent = apps.length;
+    document.getElementById('statDevs').textContent = Object.keys(devs).length;
+    document.getElementById('statDL').textContent = td;
+}
+function appliquerFiltres() {
+    appsFiltrees = apps.slice();
+    if (categorie !== 'all') appsFiltrees = appsFiltrees.filter(a => a.cat === categorie);
+    if (recherche) appsFiltrees = appsFiltrees.filter(a => (a.nom || '').toLowerCase().includes(recherche) || (a.dev || '').toLowerCase().includes(recherche));
+    appsFiltrees.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
     afficher();
 }
-
 function afficher() {
-    let g=document.getElementById('appGrid');
-    if(apps.length===0){ g.innerHTML='<p style="color:#9ca3af;text-align:center;">Aucune app. Publiez la première !</p>'; return; }
-    
-    g.innerHTML=apps.map(function(a){
-        let dl=telechargements[a.id]||0;
-        let url=a.url||'';
-        let isReal=url.startsWith('http://')||url.startsWith('https://');
-        
-        return '<div class="card">'+
-            '<h3>'+(a.nom||'Sans nom')+'</h3>'+
-            '<p>Par '+(a.dev||'Inconnu')+' | v'+(a.ver||'1.0')+'</p>'+
-            '<p>'+(a.desc||'')+'</p>'+
-            '<p style="color:#00e676;font-size:11px;">📥 '+dl+' téléchargements</p>'+
-            (isReal?
-                '<a href="'+url+'" class="btn-download" target="_blank" rel="noopener noreferrer" onclick="compterDL('+a.id+',\''+(a.nom||'App')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER</a>':
-                '<button class="btn-download" onclick="compterDL('+a.id+',\''+(a.nom||'App')+'\')"><i class="fas fa-download"></i> TÉLÉCHARGER (SIMULATION)</button>')+
-        '</div>';
+    let g = document.getElementById('appGrid');
+    if (appsFiltrees.length === 0) { g.innerHTML = '<div class="empty"><i class="fab fa-android"></i><h3>Aucune application</h3><p>Soyez le premier à publier !</p><button class="btn btn-accent" onclick="ouvrirModal()">📤 Publier</button></div>'; return; }
+    g.innerHTML = appsFiltrees.map(a => {
+        let dl = telechargements[a.id] || 0, isNew = (Date.now() - new Date(a.date || Date.now()).getTime()) < 86400000;
+        let url = a.url || '', isReal = url.startsWith('http://') || url.startsWith('https://');
+        let isFav = favoris.includes(a.id);
+        let iconHtml = (a.icon && a.icon !== '') ? '<div class="card-icon"><img src="' + a.icon + '" alt="Icon"></div>' : '<div class="card-icon"><i class="fab fa-android"></i></div>';
+        return '<div class="card"><div class="card-header">' + iconHtml + '<div><div class="card-title">' + (a.nom || 'Sans nom') + (isNew ? ' <span class="badge-new">NEW</span>' : '') + '</div><div class="card-dev">Par ' + (a.dev || 'Inconnu') + '</div></div></div><p class="card-desc">' + (a.desc || '') + '</p><div class="card-meta"><span class="card-ver">📦 v' + (a.ver || '1.0') + '</span><span class="card-dl">📥 ' + dl + '</span></div>' +
+            (isReal ? '<a href="' + url + '" class="btn-download" target="_blank" rel="noopener noreferrer" onclick="compterDL(' + a.id + ',\'' + (a.nom || 'App') + '\')"><i class="fas fa-download"></i> TÉLÉCHARGER</a>' : '<button class="btn-download" onclick="compterDL(' + a.id + ',\'' + (a.nom || 'App') + '\')"><i class="fas fa-download"></i> TÉLÉCHARGER</button>') +
+            '<div class="card-actions"><button class="btn-action btn-wa" onclick="partagerApp(' + a.id + ',\'whatsapp\')"><i class="fab fa-whatsapp"></i></button><button class="btn-action btn-tw" onclick="partagerApp(' + a.id + ',\'twitter\')"><i class="fab fa-twitter"></i></button><button class="btn-action btn-fb" onclick="partagerApp(' + a.id + ',\'facebook\')"><i class="fab fa-facebook"></i></button><button class="btn-action btn-link" onclick="copierLien(' + a.id + ')"><i class="fas fa-link"></i></button></div>' +
+            '<button class="btn btn-sm" style="margin-top:6px;width:100%;background:transparent;border:1px solid var(--border);color:' + (isFav ? '#ef4444' : 'var(--text2)') + ';" onclick="toggleFav(' + a.id + ')"><i class="fas fa-heart"></i> ' + (isFav ? 'Retiré' : 'Favoris') + '</button></div>';
     }).join('');
 }
+function compterDL(id, nom) { telechargements[id] = (telechargements[id] || 0) + 1; localStorage.setItem('dl', JSON.stringify(telechargements)); historique.unshift({ nom, date: new Date().toISOString() }); localStorage.setItem('hist', JSON.stringify(historique)); toast('📥 ' + nom + ' téléchargé !'); setTimeout(() => { majStats(); afficher(); }, 500); }
+function toggleFav(id) { let i = favoris.indexOf(id); i > -1 ? favoris.splice(i, 1) : favoris.push(id); localStorage.setItem('fav', JSON.stringify(favoris)); toast(i > -1 ? 'Retiré' : '❤️ Ajouté !'); appliquerFiltres(); }
+function partagerApp(id, r) { let a = apps.find(x => x.id === id); if (!a) return; let url = 'https://palukugloire401-cmd.github.io/OpenStore/?app=' + id, t = encodeURIComponent('📱 Télécharge ' + (a.nom || 'cette app') + ' sur OpenStore ! ' + url); let liens = { whatsapp: 'https://wa.me/?text=' + t, twitter: 'https://twitter.com/intent/tweet?text=' + t, facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) }; if (liens[r]) window.open(liens[r], '_blank', 'noopener,noreferrer'); }
+function copierLien(id) { let url = 'https://palukugloire401-cmd.github.io/OpenStore/?app=' + id; if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => toast('📋 Lien copié !')); else prompt('Copiez :', url); }
+function filtrer() { recherche = (document.getElementById('searchInput')?.value || '').trim().toLowerCase(); appliquerFiltres(); }
+function filtrerCat(cat, el) { document.querySelectorAll('.filter').forEach(f => f.classList.remove('active')); el.classList.add('active'); categorie = cat; appliquerFiltres(); }
 
-function compterDL(id,nom){ telechargements[id]=(telechargements[id]||0)+1; localStorage.setItem('dl',JSON.stringify(telechargements)); toast('📥 '+nom+' téléchargé !'); setTimeout(function(){ afficher(); },500); }
-
-function publier(){
-    let n=document.getElementById('appName').value.trim();
-    let d=document.getElementById('developer').value.trim();
-    let v=document.getElementById('version').value.trim();
-    let desc=document.getElementById('description').value.trim();
-    let url=document.getElementById('appUrl').value.trim();
+// ============ PUBLICATION AVEC UPLOAD AUTO ============
+async function publier() {
+    let n = document.getElementById('appName').value.trim(), d = document.getElementById('developer').value.trim(), v = document.getElementById('version').value.trim(), c = document.getElementById('category').value, desc = document.getElementById('description').value.trim(), f = document.getElementById('apkFile').files[0];
+    if (!n || !d || !v || !desc) { toast('❌ Remplissez tous les champs'); return; }
+    if (!f) { toast('❌ Sélectionnez un fichier APK'); return; }
     
-    if(!n||!d||!v||!desc){ toast('Remplissez tous les champs'); return; }
-    if(!url){ toast('Ajoutez un lien de téléchargement'); return; }
+    let btn = document.getElementById('btnPublier'); btn.disabled = true; btn.textContent = '⏳ Upload...';
+    document.getElementById('progressBar').classList.add('active'); let pf = document.getElementById('progressFill'); pf.style.width = '0%';
     
-    let existants=apps.filter(function(a){ return (a.nom||'').toLowerCase()===n.toLowerCase()&&(a.dev||'').toLowerCase()===d.toLowerCase(); });
-    existants.forEach(function(o){ let i=apps.findIndex(function(a){ return a.id===o.id; }); if(i>-1) apps.splice(i,1); });
-    
-    apps.unshift({ id:Date.now(), nom:n, dev:d, ver:v, desc:desc, url:url, date:new Date().toISOString() });
-    localStorage.setItem('apps',JSON.stringify(apps));
-    fetch(DB_URL,{ method:'PUT',body:JSON.stringify(apps) }).catch(function(){});
-    
-    toast('✅ '+n+' publiée !');
-    fermerModal();
-    afficher();
+    try {
+        // Upload vers File.io (GRATUIT, AUTOMATIQUE)
+        let formData = new FormData(); formData.append('file', f);
+        pf.style.width = '40%';
+        let response = await fetch('https://file.io', { method: 'POST', body: formData });
+        pf.style.width = '80%';
+        if (!response.ok) throw new Error('Erreur upload');
+        let data = await response.json();
+        let downloadUrl = data.link;
+        pf.style.width = '100%';
+        
+        // Sauvegarder
+        let existants = apps.filter(a => (a.nom || '').toLowerCase() === n.toLowerCase() && (a.dev || '').toLowerCase() === d.toLowerCase());
+        existants.forEach(o => { let i = apps.findIndex(a => a.id === o.id); if (i > -1) apps.splice(i, 1); });
+        apps.unshift({ id: Date.now(), nom: n, dev: d, ver: v, cat: c, desc: desc, icon: iconDataUrl, url: downloadUrl, date: new Date().toISOString() });
+        localStorage.setItem('apps', JSON.stringify(apps));
+        await fetch(DB_URL, { method: 'PUT', body: JSON.stringify(apps) });
+        
+        toast('✅ ' + n + ' v' + v + ' publiée !');
+        fermerModal(); majStats(); appliquerFiltres();
+    } catch (e) { toast('❌ Erreur: ' + e.message); }
+    btn.disabled = false; btn.textContent = '📤 Publier';
+    document.getElementById('progressBar').classList.remove('active'); pf.style.width = '0%';
 }
 
-function ouvrirModal(){ document.getElementById('maModal').classList.add('show'); }
-function fermerModal(){ document.getElementById('maModal').classList.remove('show'); }
-function toast(m){ let d=document.createElement('div'); d.className='toast'; d.textContent=m; document.getElementById('toastContainer').appendChild(d); setTimeout(function(){ d.remove(); },3000); }
+function ouvrirModal() { document.getElementById('maModal').classList.add('show'); }
+function fermerModal() { document.getElementById('maModal').classList.remove('show'); document.getElementById('fileInfo').classList.remove('show'); document.getElementById('iconFileInfo').classList.remove('show'); document.getElementById('progressBar').classList.remove('active'); iconDataUrl = ''; }
+function ouvrirFavoris() { let g = document.getElementById('favGrid'), fav = apps.filter(a => favoris.includes(a.id)); g.innerHTML = fav.length === 0 ? '<p style="color:var(--text2);">Aucun favori</p>' : fav.map(a => '<div class="card"><div class="card-header">' + (a.icon ? '<div class="card-icon"><img src="' + a.icon + '"></div>' : '<div class="card-icon"><i class="fab fa-android"></i></div>') + '<div><div class="card-title">' + (a.nom || '') + '</div><div class="card-dev">' + (a.dev || '') + '</div></div></div><a href="' + (a.url || '#') + '" class="btn-download" target="_blank" onclick="compterDL(' + a.id + ',\'' + (a.nom || 'App') + '\')"><i class="fas fa-download"></i> TÉLÉCHARGER</a></div>').join(''); document.getElementById('favModal').classList.add('show'); }
+function ouvrirHistorique() { let c = document.getElementById('histContent'); c.innerHTML = historique.length === 0 ? '<p style="color:var(--text2);">Aucun</p>' : historique.slice(0, 30).map(h => '<div style="padding:8px;background:var(--bg);border-radius:8px;margin-bottom:6px;font-size:12px;">📥 <strong>' + (h.nom || '') + '</strong> - ' + new Date(h.date || Date.now()).toLocaleDateString() + '</div>').join(''); document.getElementById('histModal').classList.add('show'); }
+function toast(m) { let d = document.createElement('div'); d.className = 'toast'; d.textContent = m; document.getElementById('toastContainer').appendChild(d); setTimeout(() => d.remove(), 3000); }
 
-document.getElementById('maModal').onclick=function(e){ if(e.target===this) fermerModal(); };
-document.addEventListener('keydown',function(e){ if(e.key==='Escape') fermerModal(); });
+// INIT
+document.getElementById('apkFile').addEventListener('change', function() { let f = this.files[0]; if (f) { document.getElementById('fileInfo').textContent = '✅ ' + f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB)'; document.getElementById('fileInfo').classList.add('show'); } });
+document.getElementById('iconFile').addEventListener('change', function() { let f = this.files[0]; if (f) { let reader = new FileReader(); reader.onload = e => { iconDataUrl = e.target.result; document.getElementById('iconFileInfo').textContent = '✅ Icône chargée'; document.getElementById('iconFileInfo').classList.add('show'); }; reader.readAsDataURL(f); } });
+document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('show'); }); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') document.querySelectorAll('.modal.show').forEach(m => m.classList.remove('show')); });
 
 loadApps();
-console.log('✅ Prêt');
+console.log('✅ OpenStore - Upload automatique pour toutes les apps !');
 </script>
 </body>
 </html>
